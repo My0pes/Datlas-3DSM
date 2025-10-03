@@ -1,0 +1,14 @@
+GA-021
+
+Alterações no Read.me do Repositório
+
+----------------------------
+GA-022
+
+Alterações no funcionamento e gerenciamento do Jira
+
+
+----------------------------
+DW-05
+
+Continuação dos teste de uso da API fornecida pelo cliente
