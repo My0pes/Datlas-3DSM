@@ -1,14 +1,16 @@
 GA-021
 
 Alterações no Read.me do Repositório
+Danilo Alves
 
 ----------------------------
 GA-022
 
 Alterações no funcionamento e gerenciamento do Jira
-
+Gustavo de Castilho
 
 ----------------------------
 DW-05
 
 Continuação dos teste de uso da API fornecida pelo cliente
+João Vitor
