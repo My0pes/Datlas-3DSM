@@ -15,21 +15,23 @@
 # 🗂️Data
 |Sprint| Data de Início | Data de Entrega | Status | Histórico |
 |------|---------------------|--------------------|---------------------|--------------------|  
-| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (/) | Em andamento | [Relatório]()
-| 2 | :calendar:  ➡ (/) | 📆 ➡ (/) | Não iniciada | [Relatório]()
-| 3 | :calendar:  ➡ (/) | 📆 ➡ (/) | Não iniciada | [Relatório]()
+| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório]()
+| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Não iniciada | [Relatório]()
+| 3 | :calendar:  ➡ (06/11) | 📆 ➡ (/) | Não iniciada | [Relatório]()
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
 |-----------------------------------------------|
 | - As seguintes restrições devem ser cumpridas no desenvolvimento da aplicação:     
-| 1. O sistema deve ser prototipado e validado utilizando o Figma;
-
+| 1. Utilização exclusiva de dados de satélite disponíveis gratuitamente limita as fontes de informação a missões como Landsat, Sentinel, MODIS, entre outras. 
+| 2. O tempo disponível para desenvolvimento pelos alunos também será um fator restritivo, exigindo uma delimitação clara do escopo para garantir a conclusão de um produto mínimo viável.
+| 3. A disponibilidade de recursos computacionais e de armazenamento para o servidor, caso seja necessária uma infraestrutura própria para o processamento ou cache de dados, pode ser uma restrição.
 ------------------------------------------------------------------------------------
 
 # 📑PRODUCT BACKLOG
 |  Requisitos Funcionais       |                              |                              
 |------------------------------|------------------------------|
-
+RF01: Permitir que os usuários selecionem um ponto de interesse em um mapa interativo,
+preferencialmente utilizando coordenadas geográficas ou um clique direto.
 
 |   Requisitos Não Funcionais  |                                                                                                                 
 |------------------------------|   
