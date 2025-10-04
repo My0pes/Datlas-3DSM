@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
-import { Map } from './components/map/Map'
+import 'leaflet/dist/leaflet.css';
+import MapView from './components/Map/MapView.tsx';
 
 function App() {
   useEffect(()=> {
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <>
-      <Map />
+      <MapView />
     </>
   )
 }

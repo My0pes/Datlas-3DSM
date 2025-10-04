@@ -1,35 +1,8 @@
 #root {
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2rem;
+	padding: 0;
 	text-align: center;
-}
-
-#map {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	z-index: -1;
-	overflow: hidden;
-
-	& .leaflet-top {
-		width: 100vw !important;
-		display: flex !important;
-		justify-content: space-evenly !important;
-	}
-
-	& .leaflet-locationiq-control {
-		width: 90% !important;
-		font-size: 16px !important;
-		border-radius: 6px !important;
-		padding-inline: 1rem;
-		z-index: 1000;
-		border: red;
-
-		& .leaflet-locationiq-search-icon {
-			margin-left: -1rem;
-		}
-	}
 }
 
 .logo {
