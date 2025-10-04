@@ -32,11 +32,27 @@
 |------------------------------|------------------------------|
 RF01: Permitir que os usuários selecionem um ponto de interesse em um mapa interativo,
 preferencialmente utilizando coordenadas geográficas ou um clique direto.
-
+RF02: O sistema deve retornar dinamicamente uma lista de satélites que possuem dados gratuitos
+disponíveis para a área, detalhando suas resoluções espacial e temporal (por exemplo, 10m, diário, semanal) e as variáveis geoespaciais oferecidas (como NDVI, EVI, temperatura da superfície, umidade do solo etc.).
+RF03: Um requisito central é a capacidade de comparação de dados, onde o usuário poderá
+selecionar duas ou mais séries temporais de variáveis similares (por exemplo, NDVI de Sentinel-2 e
+Landsat-8) para a mesma área, visualizando-as lado a lado em gráficos ou pequenas representações
+visuais.
+RF04: A plataforma deve oferecer opções de filtragem por satélite, variável ou período de tempo,
+facilitando a navegação pelos dados e possibilitando a exportação dos metadados e dos dados
+brutos ou processados (se aplicável e permitido) para análise posterior.
 
 |   Requisitos Não Funcionais  |                                                                                                                 
 |------------------------------|   
-
+RNF01: A usabilidade será um requisito não funcional crítico, exigindo uma interface intuitiva, clara
+e de fácil navegação, mesmo para usuários sem experiência prévia em geoprocessamento.
+RNF02: A performance da aplicação deve ser otimizada para garantir o carregamento rápido do
+mapa e dos dados, bem como a fluidez na interação, mesmo com grandes volumes de informações
+geoespaciais.
+RNF03: A escalabilidade é outro ponto importante, de forma que a aplicação possa lidar com um
+número crescente de usuários e fontes de dados de satélite no futuro.
+RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados
+e corretamente atribuídos às suas fontes originais.
 -----------------------------------------------------------------------------------
 
 # USER STORIES
