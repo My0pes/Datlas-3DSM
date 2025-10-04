@@ -33,9 +33,10 @@
 RF01: Permitir que os usuários selecionem um ponto de interesse em um mapa interativo,
 preferencialmente utilizando coordenadas geográficas ou um clique direto.
 
+
 |   Requisitos Não Funcionais  |                                                                                                                 
 |------------------------------|   
-|
+
 -----------------------------------------------------------------------------------
 
 # USER STORIES
