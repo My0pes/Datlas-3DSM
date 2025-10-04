@@ -39,8 +39,7 @@ RF04: A plataforma deve oferecer opções de filtragem por satélite, variável 
 |   Requisitos Não Funcionais  |                                                                                                                 
 |------------------------------|   
 RNF01: A usabilidade será um requisito não funcional crítico, exigindo uma interface intuitiva, clara e de fácil navegação, mesmo para usuários sem experiência prévia em geoprocessamento.
-RNF02: A performance da aplicação deve ser otimizada para garantir o carregamento rápido do mapa e dos dados, bem como a fluidez na interação, mesmo com grandes volumes de informações
-geoespaciais.
+RNF02: A performance da aplicação deve ser otimizada para garantir o carregamento rápido do mapa e dos dados, bem como a fluidez na interação, mesmo com grandes volumes de informações geoespaciais.
 RNF03: A escalabilidade é outro ponto importante, de forma que a aplicação possa lidar com um número crescente de usuários e fontes de dados de satélite no futuro.
 RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados e corretamente atribuídos às suas fontes originais.
 -----------------------------------------------------------------------------------
