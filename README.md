@@ -50,7 +50,13 @@ US01: Como usuário, quero visualizar um mapa interativo para navegar pela área
 US02: Como usuário, quero clicar em um ponto do mapa para selecionar uma localização exata, para obter informações específicas daquela região.
 US03: Como usuário, quero consultar no STAC os satélites que possuem dados gratuitos para o ponto selecionado, para saber quais fontes de dados estão disponíveis.
 US04: Como usuário, quero ver as informações detalhadas de cada satélite (nome, resolução espacial, resolução temporal e variáveis disponíveis), para comparar rapidamente qual dado é mais adequado para minha análise.
-
+US05: Como usuário, quero selecionar variáveis específicas (ex.: NDVI, temperatura da superfície, umidade do solo) para um satélite, para analisar os indicadores mais relevantes para minha pesquisa.
+US06: Como usuário, quero comparar séries temporais de variáveis semelhantes de diferentes satélites (ex.: NDVI de Sentinel-2 vs Landsat-8), para entender diferenças entre missões e escolher o dado mais apropriado.
+US07: Como usuário, quero visualizar essas séries temporais em gráficos lado a lado, para facilitar a análise comparativa de tendências ao longo do tempo.
+US08: Como usuário, quero filtrar os resultados exibidos por satélite, variável ou período, para refinar minha busca e evitar excesso de informação.
+US09: Como usuário, quero exportar os metadados e séries temporais em formatos como CSV ou JSON, para usar os dados em análises externas.
+US10: Como usuário sem experiência em geoprocessamento, quero uma interface simples, clara e responsiva, para navegar facilmente mesmo sem conhecimento técnico avançado.
+US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáveis e atualizados, para não perder tempo e ter confiança nos resultados exibidos.
 -------------------------------------------------------------------------------------------------
 
 # BURNDOWN SP1
