@@ -44,9 +44,8 @@ RNF03: A escalabilidade é outro ponto importante, de forma que a aplicação po
 RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados e corretamente atribuídos às suas fontes originais.
 -------------------------------------------------------------------------------------------------
 
-# USER STORIES SPRINT 2
-
-|----------------------------------------------------------------------------------------|
+|   USER STORIES  |                                                                                                                 
+|------------------------------| 
 US01: Como usuário, quero visualizar um mapa interativo para navegar pela área de interesse.
 US02: Como usuário, quero clicar em um ponto do mapa para selecionar uma localização exata, para obter informações específicas daquela região.
 US03: Como usuário, quero consultar no STAC os satélites que possuem dados gratuitos para o ponto selecionado, para saber quais fontes de dados estão disponíveis.
