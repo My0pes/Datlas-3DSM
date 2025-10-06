@@ -40,8 +40,9 @@ RF04: A plataforma deve oferecer opções de filtragem por satélite, variável 
 RNF01: A usabilidade será um requisito não funcional crítico, exigindo uma interface intuitiva, clara e de fácil navegação, mesmo para usuários sem experiência prévia em geoprocessamento.
 RNF02: A performance da aplicação deve ser otimizada para garantir o carregamento rápido do mapa e dos dados, bem como a fluidez na interação, mesmo com grandes volumes de informações geoespaciais.
 RNF03: A escalabilidade é outro ponto importante, de forma que a aplicação possa lidar com um número crescente de usuários e fontes de dados de satélite no futuro.
-RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados e corretamente atribuídos às suas fontes originais.
--------------------------------------------------------------------------------------------------
+RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados e corretamente atribuídos às suas fontes originais. 
+-----------------------------------------------------------------------------------
+
 
 |   USER STORIES  |                                                                                                                 
 |------------------------------| 
@@ -60,7 +61,7 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 
 # BURNDOWN SP1
  <div align = center>
- <img src="">
+ <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP1-3DSM.PNG">
  </div>
 
 
@@ -68,27 +69,23 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 -----------------------------------------------------------------------------------
 
 # WIREFRAME
-<img src='' width='500'>
-<img src='' width='500'/>
-<img src='' width='500'/>
-<img src='' width='500'/>
-<img src='' width='500'/>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Home.PNG' width='500'>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Mapa.PNG' width='500'/>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Quem%20somos%20n%C3%B3s.PNG' width='500'/>
+
 
 -----------------------------------------------------------------------------------
 
 # 🔗 LINKS
 
 ### 🧮 Jira 
-[Clique Aqui]()
-
-### 📖 REQUISITOS DO CLIENTE
-[Clique Aqui]()
+[Clique Aqui](https://myopes.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ### 🎨 FIGMA
 [Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=0-1&p=f&t=vCY8DnpKUaJdMH9g-0)
 
 ### ATA DE REUNIÃO SCRUM 
-[Clique Aqui]()
+[Clique Aqui](https://github.com/My0pes/Datlas-3DSM/tree/main/Repositorio/Atas%20Sprint%201)
 
 # :computer: EQUIPE
 
@@ -98,5 +95,5 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 |  P.O (Product Owner) |   Danilo Alves   |     <a target="_blank" href="https://github.com/Danilo-Fatec"><img  src="https://skillicons.dev/icons?i=github"></a>|   
 | Dev     |   André Luis Alves  |     <a target="_blank" href="https://github.com/andre28122"><img  src="https://skillicons.dev/icons?i=github"></a>|   
 | Dev     |   Bruno Maria   |     <a target="_blank" href="https://github.com/BrunoPrince1"><img  src="https://skillicons.dev/icons?i=github"></a>| 
-| Dev     |   João Vitor   |     <a target="_blank" href=""><img  src="https://skillicons.dev/icons?i=github"></a>|  
+| Dev     |   João Vitor   |     <a target="_blank" href="https://github.com/jvrb"><img  src="https://skillicons.dev/icons?i=github"></a>|  
 
