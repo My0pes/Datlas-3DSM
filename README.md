@@ -35,7 +35,7 @@ preferencialmente utilizando coordenadas geográficas ou um clique direto.
 
 |   Requisitos Não Funcionais  |                                                                                                                 
 |------------------------------|   
-|
+| 
 -----------------------------------------------------------------------------------
 
 # USER STORIES
@@ -49,7 +49,7 @@ preferencialmente utilizando coordenadas geográficas ou um clique direto.
 
 # BURNDOWN SP1
  <div align = center>
- <img src="">
+ <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP1-3DSM.PNG">
  </div>
 
 
@@ -57,27 +57,23 @@ preferencialmente utilizando coordenadas geográficas ou um clique direto.
 -----------------------------------------------------------------------------------
 
 # WIREFRAME
-<img src='' width='500'>
-<img src='' width='500'/>
-<img src='' width='500'/>
-<img src='' width='500'/>
-<img src='' width='500'/>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Home.PNG' width='500'>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Mapa.PNG' width='500'/>
+<img src='https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/Quem%20somos%20n%C3%B3s.PNG' width='500'/>
+
 
 -----------------------------------------------------------------------------------
 
 # 🔗 LINKS
 
 ### 🧮 Jira 
-[Clique Aqui]()
-
-### 📖 REQUISITOS DO CLIENTE
-[Clique Aqui]()
+[Clique Aqui](https://myopes.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ### 🎨 FIGMA
 [Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=0-1&p=f&t=vCY8DnpKUaJdMH9g-0)
 
 ### ATA DE REUNIÃO SCRUM 
-[Clique Aqui]()
+[Clique Aqui](https://github.com/My0pes/Datlas-3DSM/tree/main/Repositorio/Atas%20Sprint%201)
 
 # :computer: EQUIPE
 
@@ -87,5 +83,5 @@ preferencialmente utilizando coordenadas geográficas ou um clique direto.
 |  P.O (Product Owner) |   Danilo Alves   |     <a target="_blank" href="https://github.com/Danilo-Fatec"><img  src="https://skillicons.dev/icons?i=github"></a>|   
 | Dev     |   André Luis Alves  |     <a target="_blank" href="https://github.com/andre28122"><img  src="https://skillicons.dev/icons?i=github"></a>|   
 | Dev     |   Bruno Maria   |     <a target="_blank" href="https://github.com/BrunoPrince1"><img  src="https://skillicons.dev/icons?i=github"></a>| 
-| Dev     |   João Vitor   |     <a target="_blank" href=""><img  src="https://skillicons.dev/icons?i=github"></a>|  
+| Dev     |   João Vitor   |     <a target="_blank" href="https://github.com/jvrb"><img  src="https://skillicons.dev/icons?i=github"></a>|  
 
