@@ -20,8 +20,7 @@
 | 3 | :calendar:  ➡ (06/11) | 📆 ➡ (/) | Não iniciada | [Relatório]()
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
-|-----------------------------------------------|
-| - As seguintes restrições devem ser cumpridas no desenvolvimento da aplicação:     
+|-----------------------------------------------|  
 | 1. Utilização exclusiva de dados de satélite disponíveis gratuitamente limita as fontes de informação a missões como Landsat, Sentinel, MODIS, entre outras. 
 | 2. O tempo disponível para desenvolvimento pelos alunos também será um fator restritivo, exigindo uma delimitação clara do escopo para garantir a conclusão de um produto mínimo viável.
 | 3. A disponibilidade de recursos computacionais e de armazenamento para o servidor, caso seja necessária uma infraestrutura própria para o processamento ou cache de dados, pode ser uma restrição.
