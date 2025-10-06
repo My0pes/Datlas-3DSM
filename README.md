@@ -42,14 +42,15 @@ RNF01: A usabilidade será um requisito não funcional crítico, exigindo uma in
 RNF02: A performance da aplicação deve ser otimizada para garantir o carregamento rápido do mapa e dos dados, bem como a fluidez na interação, mesmo com grandes volumes de informações geoespaciais.
 RNF03: A escalabilidade é outro ponto importante, de forma que a aplicação possa lidar com um número crescente de usuários e fontes de dados de satélite no futuro.
 RNF04: A confiabilidade é essencial, garantindo que os dados exibidos sejam precisos, atualizados e corretamente atribuídos às suas fontes originais.
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 
-# USER STORIES
-|Requisito               |Ator          |Ação                         |Motivo                        
-|--------------|-----------------------------|------------------------------|---------------|
+# USER STORIES SPRINT 2
 
-
-
+|----------------------------------------------------------------------------------------|
+US01: Como usuário, quero visualizar um mapa interativo para navegar pela área de interesse.
+US02: Como usuário, quero clicar em um ponto do mapa para selecionar uma localização exata, para obter informações específicas daquela região.
+US03: Como usuário, quero consultar no STAC os satélites que possuem dados gratuitos para o ponto selecionado, para saber quais fontes de dados estão disponíveis.
+US04: Como usuário, quero ver as informações detalhadas de cada satélite (nome, resolução espacial, resolução temporal e variáveis disponíveis), para comparar rapidamente qual dado é mais adequado para minha análise.
 
 -------------------------------------------------------------------------------------------------
 
