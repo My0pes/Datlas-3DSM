@@ -77,7 +77,7 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 [Clique Aqui](https://myopes.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ### 🎨 FIGMA
-[Clique Aqui]([https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=0-1&p=f&t=vCY8DnpKUaJdMH9g-0](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=8-2&t=ZzsFrwYVSUWsnnn9-1))
+[Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=8-2&t=ZzsFrwYVSUWsnnn9-1)
 
 ### ATA DE REUNIÃO SCRUM 
 [Clique Aqui](https://github.com/My0pes/Datlas-3DSM/tree/main/Repositorio/Atas%20Sprint%201)
