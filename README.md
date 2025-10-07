@@ -74,7 +74,7 @@ preferencialmente utilizando coordenadas geográficas ou um clique direto.
 [Clique Aqui]()
 
 ### 🎨 FIGMA
-[Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=0-1&p=f&t=vCY8DnpKUaJdMH9g-0)
+[Clique Aqui]([https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=0-1&p=f&t=vCY8DnpKUaJdMH9g-0](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=8-2&t=ZzsFrwYVSUWsnnn9-1))
 
 ### ATA DE REUNIÃO SCRUM 
 [Clique Aqui]()
