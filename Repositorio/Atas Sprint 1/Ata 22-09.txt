@@ -1,0 +1,39 @@
+GA-006
+
+Colocar membros no Repositório
+Danilo
+-------------------------------------
+GA-007
+
+Colocar membros na Equipe do Jira
+Gustavo
+-------------------------------------
+GA-008
+
+Enviar Link do Repositório para Professora BD
+https://github.com/My0pes/Datlas/upload/main
+Danilo
+-------------------------------------
+GA-009
+
+Atribuir Tasks no Jira
+Gustavo
+-------------------------------------
+GA-010
+
+Criar projeto no Figma
+Danilo
+-------------------------------------
+GA-011
+
+Começar tasks do Figma
+André, Bruno e João
+-------------------------------------
+GA-012
+
+Base do Repositório
+Danilo
+-------------------------------------
+
+
+
