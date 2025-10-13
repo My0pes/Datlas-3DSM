@@ -3,7 +3,6 @@ import './App.css'
 import 'leaflet/dist/leaflet.css';
 import MapView from './components/Map/MapView.tsx';
 
-
 function App() {
   useEffect(()=> {
     fetch('/api/hello')
