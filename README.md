@@ -73,13 +73,13 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 
 # 🔗 LINKS
 
-### 🧮 Jira 
+### 🧮 JIRA
 [Clique Aqui](https://myopes.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ### 🎨 FIGMA
 [Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=8-2&t=ZzsFrwYVSUWsnnn9-1)
 
-### ATA DE REUNIÃO SCRUM 
+### ATAS DE ATIVIDADE
 [Clique Aqui](https://github.com/My0pes/Datlas-3DSM/tree/main/Repositorio/Atas%20Sprint%201)
 
 # :computer: EQUIPE
