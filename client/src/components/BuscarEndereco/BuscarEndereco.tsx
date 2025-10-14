@@ -30,7 +30,7 @@ export function BuscarEndereco({ onSelecionar }: Props) {
 		const buscarugestoes = async () => {
 			if (query.length < 3) return;
 
-			const response = await fetch(`https://api.locationiq.com/v1/autocomplete?key=${apiKey}&q=${query}&limit=5&countrycodes=br&normalizecity=1&format=json`);
+			const response = await fetch(`https://api.locationiq.com/v1/autocomplete?key=${apiKey}&q=${query}&limit=5&countrycodes=br&normalizecity=1&dedupe=1&format=json`);
 			const data = await response.json();
 			setSugestoes(data);
 		};
@@ -47,12 +47,15 @@ export function BuscarEndereco({ onSelecionar }: Props) {
 
 				<ul>
 					{sugestoes.map((item, index) => (
-                        <li key={index} onClick={() => {
+                        (item.address?.city && item.address.state) && (
+                            <li key={index} onClick={() => {
                             onSelecionar({lat: parseFloat(item.lat), lng: parseFloat(item.lon)})
                             setQuery("")
                         }}>
-                            {item.display_name}
+                            <strong>{item.address?.city},{item.address?.state}, {item.address?.country}</strong>
+                            <span>{item.display_name} </span>
                         </li>
+                        )
 					))}
 				</ul>
 			</div>

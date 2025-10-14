@@ -32,11 +32,17 @@
         gap: .2rem;
 
         & li {
-            height: 1.5rem;
-            padding: .5rem;
+            display: flex;
+            flex-direction: column;
+            padding: .2rem;
+            padding-left: .5rem;
             background-color: #fff;
             color: #000;
             transition: 200ms;
+
+            & span {
+                font-size: .8rem;
+            }
         }
 
         & li:hover {
