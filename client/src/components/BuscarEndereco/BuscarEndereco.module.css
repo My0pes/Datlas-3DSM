@@ -1,0 +1,48 @@
+.searchMap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    position: fixed;
+    top: 0.6rem;
+    z-index: 10;
+
+    & input{
+        width: 80%;
+        height: 2.5rem;
+        padding: .5rem;
+        box-sizing: border-box;
+        border: none;
+        border-radius: .5rem;
+        background-color: #fff;
+        color: #000;
+    }
+
+    & input:focus-within {
+        outline: 1px solid #151A22;
+    }
+
+    & ul {
+        width: 80%;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+
+        & li {
+            height: 1.5rem;
+            padding: .5rem;
+            background-color: #fff;
+            color: #000;
+            transition: 200ms;
+        }
+
+        & li:hover {
+            transform: scale(1.01);
+            outline: 1px solid #151A22;
+            box-sizing: content-box;
+        }
+    }
+}
