@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import styles from './Map.module.css'
 import { useState, useEffect} from "react";
 import { MarkerMap } from "../MarkerMap/MarkerMap";
+import { BuscarEndereco } from "../BuscarEndereco/BuscarEndereco";
 
 type PropsZoom = {
 	zoom: number
@@ -45,7 +46,7 @@ export default function MapView() {
 
 	// Ajustando as coordenadas de zoom para deixar espaço para o dashboard
 	const centerSpaceDashboard = {
-		lat: position.lat - 0.03,
+		lat: position.lat - 0.018,
 		lng: position.lng
 	}
 	return (
@@ -61,6 +62,7 @@ export default function MapView() {
 					<AtualizarZoom zoom={zoomPosition} center={centerSpaceDashboard}/>
 				</MapContainer>
             </div>
+			<BuscarEndereco onSelecionar={(coords) => setCoordenadas(coords)}/>
 		</>
 	);
 }
