@@ -10,8 +10,8 @@
 # 🗂️Data
 |Sprint| Data de Início | Data de Entrega | Status | Histórico |
 |------|---------------------|--------------------|---------------------|--------------------|  
-| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório]()
-| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Não iniciada | [Relatório]()
+| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-1.txt)
+| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Em andamento | [Relatório]()
 | 3 | :calendar:  ➡ (06/11) | 📆 ➡ (/) | Não iniciada | [Relatório]()
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
@@ -59,7 +59,7 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
  <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP1-3DSM.PNG">
  </div>
 
-
+# BURNDOWN SP2
  
 -----------------------------------------------------------------------------------
 
