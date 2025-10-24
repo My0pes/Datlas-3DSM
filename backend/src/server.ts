@@ -73,6 +73,20 @@ app.get('/api/stac/collections', async (req: Request, res: Response) => {
   }
 });
 
+// ==========================
+// NOVA ROTA WTSS (listar coverages)(para filtragem no front)
+// ==========================
+
+app.get('/api/wtss/coverages', async (req: Request, res: Response) => {
+  try {
+    const WTSS_URL = 'https://data.inpe.br/bdc/wtss/v4/';
+    const response = await axios.get(`${WTSS_URL}list_coverages`);
+    res.json(response.data.coverages);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao listar coverages WTSS.' });
+  }
+});
+
 // ROTA WTSS CORRIGIDA (GET /time_series com query params para v4)
 // ROTA WTSS CORRIGIDA (GET /time_series com parsing fixo para v4)
 app.get('/api/wtss/timeseries', async (req: Request, res: Response) => {
