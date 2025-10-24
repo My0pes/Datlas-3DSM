@@ -1,7 +1,7 @@
 # Myopes
 <div align="center">
 </div>
-<img src='Repositorio/Imagens repositorio/thumbnail_logo-equipe.png' width='500'/>
+<img src='Repositorio/Imagens repositorio/thumbnail_logo-equipe.png' width ='500'/>
 <div>
 
 -----------------------------------------------------------------------------------
@@ -10,8 +10,8 @@
 # 🗂️Data
 |Sprint| Data de Início | Data de Entrega | Status | Histórico |
 |------|---------------------|--------------------|---------------------|--------------------|  
-| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório]()
-| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Não iniciada | [Relatório]()
+| 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-1.txt)
+| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Em andamento | [Relatório]()
 | 3 | :calendar:  ➡ (06/11) | 📆 ➡ (/) | Não iniciada | [Relatório]()
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
@@ -59,7 +59,7 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
  <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP1-3DSM.PNG">
  </div>
 
-
+# BURNDOWN SP2
  
 -----------------------------------------------------------------------------------
 
@@ -73,13 +73,13 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
 
 # 🔗 LINKS
 
-### 🧮 Jira 
+### 🧮 JIRA
 [Clique Aqui](https://myopes.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ### 🎨 FIGMA
 [Clique Aqui](https://www.figma.com/design/no4r4O5bfFE5hHsAaGSUdF/Untitled?node-id=8-2&t=ZzsFrwYVSUWsnnn9-1)
 
-### ATA DE REUNIÃO SCRUM 
+### ATAS DE ATIVIDADE
 [Clique Aqui](https://github.com/My0pes/Datlas-3DSM/tree/main/Repositorio/Atas%20Sprint%201)
 
 # :computer: EQUIPE
