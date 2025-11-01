@@ -17,14 +17,16 @@ interface SatelliteData {
   variables: string[];
 }
 
-// ==========================
-// ROTA STAC
-// ==========================
+// ROTA STAC EXPANDIDA COM FILTROS
 app.get('/api/stac/collections', async (req: Request, res: Response) => {
-  console.log('Requisição recebida:', req.query);
+  console.log('Requisição STAC recebida:', req.query);
 
   const lat = parseFloat(req.query.lat as string);
   const lng = parseFloat(req.query.lng as string);
+  const filterSatellite = (req.query.satellite as string)?.toLowerCase();  // Ex.: 'sentinel'
+  const filterVariable = (req.query.variable as string)?.toLowerCase();  // Ex.: 'ndvi'
+  const filterStart = req.query.start_date as string;  // Ex.: '2020-01-01'
+  const filterEnd = req.query.end_date as string;  // Ex.: '2023-12-31'
 
   if (isNaN(lat) || isNaN(lng)) {
     return res.status(400).json({ error: 'Forneça lat e lng válidos.' });
@@ -40,35 +42,46 @@ app.get('/api/stac/collections', async (req: Request, res: Response) => {
       const col = colResponse.data;
 
       const bbox: number[] = col.extent.spatial.bbox[0];
-      if (bbox[0] <= lng && lng <= bbox[2] && bbox[1] <= lat && lat <= bbox[3]) {
-        const summaries = col.summaries || {};
-        const itemAssets = col.item_assets || {};
+      if (!(bbox[0] <= lng && lng <= bbox[2] && bbox[1] <= lat && lat <= bbox[3])) continue;
 
-        const satellite = col.title?.split('-')[0] || colId.split('-')[0];
-        let resSpatial = summaries.gsd?.[0] || 'Não especificado';
-        if (typeof resSpatial === 'number') resSpatial = `${resSpatial}m`;
+      // Filtros
+      const satellite = (col.title?.split('-')[0] || colId.split('-')[0]).toLowerCase();
+      if (filterSatellite && !satellite.includes(filterSatellite)) continue;
 
-        let resTemporal = 'Não especificado';
-        const temporalMatch = colId.match(/(\d+)(D|M)/);
-        if (temporalMatch) {
-          resTemporal = `${temporalMatch[1]} ${temporalMatch[2] === 'D' ? 'dias' : 'meses'}`;
-        }
+      const summaries = col.summaries || {};
+      const variables: string[] = summaries['eo:bands']?.map((band: any) => band.name.toLowerCase()) || Object.keys(col.item_assets || {}).map(k => k.toLowerCase());
+      if (filterVariable && !variables.some(v => v.includes(filterVariable))) continue;
 
-        const variables: string[] = summaries['eo:bands']?.map((band: any) => band.name) || Object.keys(itemAssets);
+      // Filtro temporal (intervalo sobreposto)
+      const temporalInterval = col.extent.temporal.interval[0];
+      const colStart = temporalInterval[0] ? new Date(temporalInterval[0]) : new Date(0);
+      const colEnd = temporalInterval[1] ? new Date(temporalInterval[1]) : new Date();
+      if (filterStart && new Date(filterStart) > colEnd) continue;
+      if (filterEnd && new Date(filterEnd) < colStart) continue;
 
-        available.push({
-          satellite,
-          collection_id: colId,
-          resolution_spatial: resSpatial as string,
-          resolution_temporal: resTemporal,
-          variables,
-        });
+      // Parsing de detalhes (igual ao anterior)
+      let resSpatial = summaries.gsd?.[0] || 'Não especificado';
+      if (typeof resSpatial === 'number') resSpatial = `${resSpatial}m`;
+
+      let resTemporal = 'Não especificado';
+      const temporalMatch = colId.match(/(\d+)(D|M)/);
+      if (temporalMatch) {
+        resTemporal = `${temporalMatch[1]} ${temporalMatch[2] === 'D' ? 'dias' : 'meses'}`;
       }
+
+      const variablesUpper: string[] = variables.map(v => v.toUpperCase());  // Para front
+
+      available.push({
+        satellite: col.title?.split('-')[0] || colId.split('-')[0],
+        collection_id: colId,
+        resolution_spatial: resSpatial as string,
+        resolution_temporal: resTemporal,
+        variables: variablesUpper,
+      });
     }
 
     res.json(available);
   } catch (error) {
-    console.error('Erro no backend:', error);
     res.status(500).json({ error: `Erro ao consultar STAC: ${(error as Error).message}` });
   }
 });
@@ -87,7 +100,6 @@ app.get('/api/wtss/coverages', async (req: Request, res: Response) => {
   }
 });
 
-// ROTA WTSS CORRIGIDA (GET /time_series com query params para v4)
 // ROTA WTSS CORRIGIDA (GET /time_series com parsing fixo para v4)
 app.get('/api/wtss/timeseries', async (req: Request, res: Response) => {
   console.log('Requisição WTSS recebida:', req.query);

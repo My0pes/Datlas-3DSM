@@ -16,7 +16,7 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-// Interfaces (mesmas)
+// Interfaces
 interface SatelliteData {
   satellite: string;
   collection_id: string;
@@ -39,8 +39,8 @@ const MapClickHandler: React.FC<{ onClick: (lat: number, lng: number) => void }>
 
 const App: React.FC = () => {
   const [satellites, setSatellites] = useState<SatelliteData[]>([]);
-  const [filteredSatellites, setFilteredSatellites] = useState<SatelliteData[]>([]);  // Nova: apenas compatíveis com WTSS
-  const [wtssCoverages, setWtssCoverages] = useState<string[]>([]);  // Nova: lista de coverages WTSS
+  const [filteredSatellites, setFilteredSatellites] = useState<SatelliteData[]>([]);
+  const [wtssCoverages, setWtssCoverages] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [selectedComparisons, setSelectedComparisons] = useState<{ coverage: string; band: string }[]>([
@@ -52,7 +52,7 @@ const App: React.FC = () => {
   const [endDate, setEndDate] = useState('2023-12-31');
   const [latLng, setLatLng] = useState<{ lat: number; lng: number } | null>(null);
 
-  // Nova: Fetch lista de coverages WTSS no load
+  // Fetch lista de coverages WTSS ao carregar
   useEffect(() => {
     const fetchWtssCoverages = async () => {
       try {
@@ -61,14 +61,20 @@ const App: React.FC = () => {
         const data: string[] = await response.json();
         setWtssCoverages(data);
       } catch (err) {
-        console.error('Erro ao fetch WTSS coverages:', err);
+        console.error('Erro ao buscar WTSS coverages:', err);
       }
     };
     fetchWtssCoverages();
   }, []);
 
-  const handleMapClick = async (lat: number, lng: number) => {
-    setLatLng({ lat, lng });
+  // ==============================
+  // NOVA: Função genérica para buscar satélites (com filtros opcionais)
+  // ==============================
+  const fetchSatellites = async (
+    lat: number,
+    lng: number,
+    filters: { satellite?: string; variable?: string; start_date?: string; end_date?: string } = {}
+  ) => {
     setLoading(true);
     setError(null);
     setSatellites([]);
@@ -76,20 +82,29 @@ const App: React.FC = () => {
     setTimeSeries([]);
 
     try {
-      const response = await fetch(`http://localhost:3000/api/stac/collections?lat=${lat}&lng=${lng}`);
+      const params = new URLSearchParams({
+        lat: lat.toString(),
+        lng: lng.toString(),
+      });
+      if (filters.satellite) params.append('satellite', filters.satellite);
+      if (filters.variable) params.append('variable', filters.variable);
+      if (filters.start_date) params.append('start_date', filters.start_date);
+      if (filters.end_date) params.append('end_date', filters.end_date);
+
+      const response = await fetch(`http://localhost:3000/api/stac/collections?${params}`);
       if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
       const data: SatelliteData[] = await response.json();
+
       if (data.length === 0) {
-        setError('Nenhum satélite disponível para este ponto.');
+        setError('Nenhum satélite encontrado com os filtros.');
       } else {
         setSatellites(data);
+
         // Filtra apenas compatíveis com WTSS
-        const compatible = data.filter(sat => wtssCoverages.includes(sat.collection_id));
+        const compatible = data.filter((sat) => wtssCoverages.includes(sat.collection_id));
         setFilteredSatellites(compatible);
-        if (compatible.length === 0) {
-          setError('Nenhuma coverage compatível com séries temporais disponível.');
-        } else {
-          // Defaults
+
+        if (compatible.length > 0) {
           setSelectedComparisons([
             { coverage: compatible[0]?.collection_id || '', band: compatible[0]?.variables[0] || '' },
             { coverage: compatible[1]?.collection_id || '', band: compatible[1]?.variables[0] || '' },
@@ -97,18 +112,42 @@ const App: React.FC = () => {
         }
       }
     } catch (err) {
-      setError(`Erro ao consultar STAC: ${(err as Error).message}.`);
+      setError(`Erro ao consultar: ${(err as Error).message}.`);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleComparisonChange = (index: number, field: 'coverage' | 'band', value: string) => {
-    const updated = [...selectedComparisons];
-    updated[index][field] = value;
-    setSelectedComparisons(updated);
+  // Atualizado: clique no mapa usa fetchSatellites sem filtros
+  const handleMapClick = (lat: number, lng: number) => {
+    setLatLng({ lat, lng });
+    fetchSatellites(lat, lng);
   };
 
+  // ==============================
+  // NOVA: Handler do botão de filtro
+  // ==============================
+  const handleFilter = () => {
+    if (!latLng) {
+      setError('Clique no mapa primeiro para definir o ponto.');
+      return;
+    }
+    const satelliteFilter = (document.getElementById('filterSatellite') as HTMLInputElement)?.value || '';
+    const variableFilter = (document.getElementById('filterVariable') as HTMLInputElement)?.value || '';
+    const startFilter = (document.getElementById('filterStart') as HTMLInputElement)?.value || '';
+    const endFilter = (document.getElementById('filterEnd') as HTMLInputElement)?.value || '';
+
+    fetchSatellites(latLng.lat, latLng.lng, {
+      satellite: satelliteFilter,
+      variable: variableFilter,
+      start_date: startFilter,
+      end_date: endFilter,
+    });
+  };
+
+  // ==============================
+  // Mesma função de comparação temporal
+  // ==============================
   const fetchTimeSeries = async () => {
     if (!latLng) return;
     setLoading(true);
@@ -137,28 +176,31 @@ const App: React.FC = () => {
     }
   };
 
+  // ==============================
+  // Renderização dos gráficos
+  // ==============================
   const renderCharts = () => {
     return timeSeries.map((data, index) => {
       const { coverage, band } = selectedComparisons[index];
       const chartData = {
         labels: data.timeline,
-        datasets: [{
-          label: `${coverage} - ${band}`,
-          data: data.values[band.toUpperCase()] || [], 
-          borderColor: index === 0 ? 'rgb(75, 192, 192)' : 'rgb(255, 99, 132)',
-          backgroundColor: index === 0 ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)',
-          tension: 0.1,
-          spanGaps: true,
-        }],
+        datasets: [
+          {
+            label: `${coverage} - ${band}`,
+            data: data.values[band.toUpperCase()] || [],
+            borderColor: index === 0 ? 'rgb(75, 192, 192)' : 'rgb(255, 99, 132)',
+            backgroundColor: index === 0 ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1,
+            spanGaps: true,
+          },
+        ],
       };
       const options = {
         responsive: true,
         plugins: {
           title: { display: true, text: `Série Temporal: ${band} (${coverage})` },
         },
-        scales: {
-          y: { beginAtZero: false },
-        },
+        scales: { y: { beginAtZero: false } },
       };
       return (
         <div key={index} style={{ width: '45%', display: 'inline-block', margin: '10px' }}>
@@ -172,18 +214,56 @@ const App: React.FC = () => {
     <div style={{ padding: '20px' }}>
       <h1>Datlas - Portal de Dados Geoespaciais</h1>
       <p>Clique no mapa para consultar satélites disponíveis.</p>
-      
-      <MapContainer center={[-15.7934, -47.8822]} zoom={5} style={{ height: '500px', width: '100%', marginBottom: '20px' }}>
+
+      <MapContainer
+        center={[-15.7934, -47.8822]}
+        zoom={5}
+        style={{ height: '500px', width: '100%', marginBottom: '20px' }}
+      >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <MapClickHandler onClick={handleMapClick} />
       </MapContainer>
+
+      {/* 🔍 Filtros (RF04) */}
+      <div
+        style={{
+          marginBottom: '20px',
+          padding: '10px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+        }}
+      >
+        <h3>🔍 Filtros (RF04)</h3>
+        <label>Satélite:</label>
+        <input
+          id="filterSatellite"
+          placeholder="ex: sentinel ou cbers"
+          style={{ margin: '0 10px', padding: '5px' }}
+        />
+        <label>Variável:</label>
+        <input
+          id="filterVariable"
+          placeholder="ex: ndvi ou B04"
+          style={{ margin: '0 10px', padding: '5px' }}
+        />
+        <label>Data Início:</label>
+        <input type="date" id="filterStart" style={{ margin: '0 10px', padding: '5px' }} />
+        <label>Data Fim:</label>
+        <input type="date" id="filterEnd" style={{ margin: '0 10px', padding: '5px' }} />
+        <button onClick={handleFilter} disabled={loading || !latLng}>
+          {loading ? 'Filtrando...' : 'Aplicar Filtros'}
+        </button>
+        <button onClick={() => latLng && fetchSatellites(latLng.lat, latLng.lng, {})} disabled={!latLng}>
+          Limpar Filtros
+        </button>
+      </div>
 
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {satellites.length > 0 && (
         <div>
-          <h2>Satélites Disponíveis (Todos):</h2>
+          <h2>Satélites Disponíveis:</h2>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             {satellites.map((sat, index) => (
               <li key={index} style={{ margin: '10px 0', padding: '10px', border: '1px solid #ccc' }}>
@@ -197,13 +277,17 @@ const App: React.FC = () => {
 
           {filteredSatellites.length > 0 ? (
             <>
-              <h2>Comparar Séries Temporais (Apenas Compatíveis com WTSS):</h2>
+              <h2>Comparar Séries Temporais (Compatíveis com WTSS):</h2>
               {selectedComparisons.map((comp, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <label>Seleção {index + 1}:</label>
                   <select
                     value={comp.coverage}
-                    onChange={(e) => handleComparisonChange(index, 'coverage', e.target.value)}
+                    onChange={(e) => {
+                      const updated = [...selectedComparisons];
+                      updated[index].coverage = e.target.value;
+                      setSelectedComparisons(updated);
+                    }}
                     style={{ margin: '0 10px' }}
                   >
                     <option value="">Selecione Coverage</option>
@@ -215,37 +299,53 @@ const App: React.FC = () => {
                   </select>
                   <select
                     value={comp.band}
-                    onChange={(e) => handleComparisonChange(index, 'band', e.target.value)}
+                    onChange={(e) => {
+                      const updated = [...selectedComparisons];
+                      updated[index].band = e.target.value;
+                      setSelectedComparisons(updated);
+                    }}
                   >
                     <option value="">Selecione Variável</option>
-                    {filteredSatellites.find((sat) => sat.collection_id === comp.coverage)?.variables.map((varb) => (
-                      <option key={varb} value={varb}>
-                        {varb}
-                      </option>
-                    )) || []}
+                    {filteredSatellites
+                      .find((sat) => sat.collection_id === comp.coverage)
+                      ?.variables.map((v) => (
+                        <option key={v} value={v}>
+                          {v}
+                        </option>
+                      )) || []}
                   </select>
                 </div>
               ))}
 
               <div style={{ marginBottom: '20px' }}>
                 <label>Data Início:</label>
-                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} style={{ margin: '0 10px' }} />
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  style={{ margin: '0 10px' }}
+                />
                 <label>Data Fim:</label>
-                <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} style={{ margin: '0 10px' }} />
-                <button onClick={fetchTimeSeries} disabled={loading}>Comparar</button>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  style={{ margin: '0 10px' }}
+                />
+                <button onClick={fetchTimeSeries} disabled={loading}>
+                  Comparar
+                </button>
               </div>
 
               {timeSeries.length > 0 && (
                 <div>
                   <h2>Gráficos Lado a Lado:</h2>
-                  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                    {renderCharts()}
-                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap' }}>{renderCharts()}</div>
                 </div>
               )}
             </>
           ) : (
-            <p style={{ color: 'orange' }}>Nenhuma coverage compatível com séries temporais para este ponto. Tente outro local.</p>
+            <p style={{ color: 'orange' }}>Nenhuma coverage compatível com WTSS para este ponto.</p>
           )}
         </div>
       )}
