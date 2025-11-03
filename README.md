@@ -11,8 +11,8 @@
 |Sprint| Data de Início | Data de Entrega | Status | Histórico |
 |------|---------------------|--------------------|---------------------|--------------------|  
 | 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-1.txt)
-| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (/) | Em andamento | [Relatório]()
-| 3 | :calendar:  ➡ (06/11) | 📆 ➡ (/) | Não iniciada | [Relatório]()
+| 2 | :calendar:  ➡ (13/10) | 📆 ➡ (04/11) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-2.txt)
+| 3 | :calendar:  ➡ (06/11) | 📆 ➡ (25/11) | Em andamento | [Relatório](Repositorio/Relatórios/Sprint-3.txt)
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
 |-----------------------------------------------|  
@@ -60,7 +60,14 @@ US11: Como usuário, quero que o sistema carregue rápido e traga dados confiáv
  </div>
 
 # BURNDOWN SP2
- 
+  <div align = center>
+ <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP2-3DSM.PNG">
+ </div>
+
+ # BURNDOWN SP3
+  <div align = center>
+ <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP3-3DSM.PNG">
+ </div>
 -----------------------------------------------------------------------------------
 
 # WIREFRAME
