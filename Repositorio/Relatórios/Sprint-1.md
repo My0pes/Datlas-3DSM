@@ -7,23 +7,24 @@ A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedi
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 📦 Entregas Realizadas
-💡 Apresentação do conceito e fluxo dos pedidos do cliente (protótipo ou diagrama conceitual);
-🧾 Definição inicial das principais funcionalidades e requisitos relacionados aos pedidos;
-🗂️ Criação e organização do backlog inicial do produto;
-🤝 Adaptação da equipe às ferramentas e práticas ágeis utilizadas no projeto.
 
-⚠️ Dificuldades Enfrentadas
-🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;
-💬 Necessidade de melhorar a comunicação e o alinhamento interno da equipe;
-⏱️ Tempo limitado para refinar os conceitos e realizar testes mais detalhados.
+ 💡Apresentação do conceito e fluxo dos pedidos do cliente (protótipo ou diagrama conceitual);
+ 🧾Definição inicial das principais funcionalidades e requisitos relacionados aos pedidos;
+ 🗂️Criação e organização do backlog inicial do produto;
+ 🤝Adaptação da equipe às ferramentas e práticas ágeis utilizadas no projeto.
 
-📚 Aprendizados
-🔁 Importância de uma comunicação clara e constante entre todos os membros;
-🚀 Experiência prática e maior familiaridade com o framework Scrum;
-🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
+ ⚠️ Dificuldades Enfrentadas
+ 🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;
+ 💬 Necessidade de melhorar a comunicação e o alinhamento interno da equipe;
+ ⏱️ Tempo limitado para refinar os conceitos e realizar testes mais detalhados.
 
-🔮 Planejamento para a Sprint 2
-🧱 Refinar os requisitos funcionais do módulo de pedidos;
-🎨 Iniciar o desenvolvimento e detalhamento das interfaces;
-📋 Reorganizar e priorizar o backlog para as próximas entregas;
-🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
+ 📚 Aprendizados
+ 🔁 Importância de uma comunicação clara e constante entre todos os membros;
+ 🚀 Experiência prática e maior familiaridade com o framework Scrum;
+ 🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
+
+ 🔮 Planejamento para a Sprint 2
+ 🧱 Refinar os requisitos funcionais do módulo de pedidos;
+ 🎨 Iniciar o desenvolvimento e detalhamento das interfaces;
+ 📋 Reorganizar e priorizar o backlog para as próximas entregas;
+ 🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
