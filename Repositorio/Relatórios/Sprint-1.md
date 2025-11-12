@@ -3,7 +3,7 @@
 
 🎯 Objetivo da Sprint
 
-A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedidos do cliente do sistema RápidoEntregas, estabelecendo a base para o desenvolvimento das próximas funcionalidades. Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis ágeis, especialmente as funções de Product Owner (PO) e Scrum Master, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
+A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedidos do cliente do INPE, estabelecendo a base para o desenvolvimento nas próximas sprints. Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis ágeis, especialmente as funções de Product Owner (PO) e Scrum Master, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 📦 Entregas Realizadas
@@ -19,12 +19,12 @@ A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedi
  -⏱️ Tempo limitado para refinar os conceitos e realizar testes mais detalhados.
 
  📚 Aprendizados
- 🔁 Importância de uma comunicação clara e constante entre todos os membros.
- 🚀 Experiência prática e maior familiaridade com o framework Scrum.
- 🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
+ -🔁 Importância de uma comunicação clara e constante entre todos os membros.
+ -🚀 Experiência prática e maior familiaridade com o framework Scrum.
+ -🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
 
  🔮 Planejamento para a Sprint 2
- 🧱 Refinar os requisitos funcionais do módulo de pedidos.
- 🎨 Iniciar o desenvolvimento e detalhamento das interfaces.
- 📋 Reorganizar e priorizar o backlog para as próximas entregas.
- 🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
+ -🧱 Entregar requisitos funcionais.
+ -🎨 Iniciar o desenvolvimento do backend.
+ -📋 Reorganizar e priorizar o backlog para as próximas entregas.
+ -🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
