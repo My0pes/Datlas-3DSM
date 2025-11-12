@@ -3,8 +3,8 @@
 
 🎯 Objetivo da Sprint
 
-A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedidos do cliente do sistema RápidoEntregas, estabelecendo a base para o desenvolvimento das próximas funcionalidades.
-Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis ágeis, especialmente as funções de Product Owner (PO) 🧭 e Scrum Master ⚙️, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
+A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedidos do cliente do sistema RápidoEntregas, estabelecendo a base para o desenvolvimento das próximas funcionalidades. Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis ágeis, especialmente as funções de Product Owner (PO) e Scrum Master, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 📦 Entregas Realizadas
 💡 Apresentação do conceito e fluxo dos pedidos do cliente (protótipo ou diagrama conceitual);
