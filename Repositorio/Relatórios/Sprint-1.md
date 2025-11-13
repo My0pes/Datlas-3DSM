@@ -22,7 +22,14 @@ A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedi
  -🚀 Experiência prática e maior familiaridade com o framework Scrum.                                                                                                        
  -🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
 
- 🔮 Planejamento para a Sprint 2                                                                                                                                                
+ 🔮 Planejamento para a Sprint 2   
+
+--------------------------------------------------------------------------------------
+ # BURNDOWN SP1
+ <div align = center>
+ <img src="https://github.com/My0pes/Datlas-3DSM/blob/main/Repositorio/Imagens%20repositorio/burndown-SP1-3DSM.PNG">
+ </div>
+
  -🧱 Entregar requisitos funcionais.                                                                                                                                            
  -🎨 Iniciar o desenvolvimento do backend.                                                                                                                                       
  -📋 Reorganizar e priorizar o backlog para as próximas entregas.                                                                                                               
