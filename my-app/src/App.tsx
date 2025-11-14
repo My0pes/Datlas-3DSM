@@ -52,7 +52,25 @@ const App: React.FC = () => {
   const [endDate, setEndDate] = useState('2023-12-31');
   const [latLng, setLatLng] = useState<{ lat: number; lng: number } | null>(null);
 
-  // Fetch lista de coverages WTSS ao carregar
+  // ---------------------------------------------------------
+  // 🔽 Função de Download
+  // ---------------------------------------------------------
+  const downloadFile = (url: string, filename: string) => {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(link.href);
+      })
+      .catch(err => setError(`Erro ao baixar: ${err.message}`));
+  };
+
+  // ---------------------------------------------------------
+  // WTSS COVERAGES
+  // ---------------------------------------------------------
   useEffect(() => {
     const fetchWtssCoverages = async () => {
       try {
@@ -67,9 +85,9 @@ const App: React.FC = () => {
     fetchWtssCoverages();
   }, []);
 
-  // ==============================
-  // NOVA: Função genérica para buscar satélites (com filtros opcionais)
-  // ==============================
+  // ---------------------------------------------------------
+  // FUNÇÃO PARA BUSCAR SATÉLITES
+  // ---------------------------------------------------------
   const fetchSatellites = async (
     lat: number,
     lng: number,
@@ -100,7 +118,7 @@ const App: React.FC = () => {
       } else {
         setSatellites(data);
 
-        // Filtra apenas compatíveis com WTSS
+        // Filtra compatíveis com WTSS
         const compatible = data.filter((sat) => wtssCoverages.includes(sat.collection_id));
         setFilteredSatellites(compatible);
 
@@ -118,15 +136,17 @@ const App: React.FC = () => {
     }
   };
 
-  // Atualizado: clique no mapa usa fetchSatellites sem filtros
+  // ---------------------------------------------------------
+  // CLIQUE NO MAPA
+  // ---------------------------------------------------------
   const handleMapClick = (lat: number, lng: number) => {
     setLatLng({ lat, lng });
     fetchSatellites(lat, lng);
   };
 
-  // ==============================
-  // NOVA: Handler do botão de filtro
-  // ==============================
+  // ---------------------------------------------------------
+  // APLICAR FILTROS
+  // ---------------------------------------------------------
   const handleFilter = () => {
     if (!latLng) {
       setError('Clique no mapa primeiro para definir o ponto.');
@@ -145,9 +165,9 @@ const App: React.FC = () => {
     });
   };
 
-  // ==============================
-  // Mesma função de comparação temporal
-  // ==============================
+  // ---------------------------------------------------------
+  // BUSCAR SÉRIES TEMPORAIS
+  // ---------------------------------------------------------
   const fetchTimeSeries = async () => {
     if (!latLng) return;
     setLoading(true);
@@ -176,9 +196,9 @@ const App: React.FC = () => {
     }
   };
 
-  // ==============================
-  // Renderização dos gráficos
-  // ==============================
+  // ---------------------------------------------------------
+  // RENDER GRÁFICOS
+  // ---------------------------------------------------------
   const renderCharts = () => {
     return timeSeries.map((data, index) => {
       const { coverage, band } = selectedComparisons[index];
@@ -210,6 +230,9 @@ const App: React.FC = () => {
     });
   };
 
+  // ===================================================================
+  // =============================== RENDER ==============================
+  // ===================================================================
   return (
     <div style={{ padding: '20px' }}>
       <h1>Datlas - Portal de Dados Geoespaciais</h1>
@@ -261,6 +284,7 @@ const App: React.FC = () => {
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
+      {/* Lista de Satélites */}
       {satellites.length > 0 && (
         <div>
           <h2>Satélites Disponíveis:</h2>
@@ -275,6 +299,7 @@ const App: React.FC = () => {
             ))}
           </ul>
 
+          {/* Comparação WTSS */}
           {filteredSatellites.length > 0 ? (
             <>
               <h2>Comparar Séries Temporais (Compatíveis com WTSS):</h2>
@@ -337,6 +362,7 @@ const App: React.FC = () => {
                 </button>
               </div>
 
+              {/* Gráficos */}
               {timeSeries.length > 0 && (
                 <div>
                   <h2>Gráficos Lado a Lado:</h2>
@@ -349,6 +375,65 @@ const App: React.FC = () => {
           )}
         </div>
       )}
+
+      {/* -------------------------------------------------------------- */}
+      {/* 🔽 SEÇÃO FINAL: BOTÕES DE DOWNLOAD */}
+      {/* -------------------------------------------------------------- */}
+      <div style={{ marginTop: '40px', padding: '20px', borderTop: '2px solid #ccc' }}>
+        <h2>🔽 Exportações</h2>
+
+        {/* METADADOS */}
+        <button
+          onClick={() => {
+            if (!latLng) return;
+            const url = `http://localhost:3000/api/export/csv/metadados?lat=${latLng.lat}&lng=${latLng.lng}`;
+            downloadFile(url, 'metadados.csv');
+          }}
+          disabled={!latLng}
+        >
+          Baixar Metadados CSV
+        </button>
+
+        <button
+          onClick={() => {
+            if (!latLng) return;
+            const url = `http://localhost:3000/api/export/json/metadados?lat=${latLng.lat}&lng=${latLng.lng}`;
+            downloadFile(url, 'metadados.json');
+          }}
+          disabled={!latLng}
+          style={{ marginLeft: '10px' }}
+        >
+          Baixar Metadados JSON
+        </button>
+
+        <br /><br />
+
+        {/* SÉRIES TEMPORAIS */}
+        <button
+          onClick={() => {
+            if (selectedComparisons[0].coverage && selectedComparisons[0].band) {
+              const url = `http://localhost:3000/api/export/csv/series?lat=${latLng?.lat}&lng=${latLng?.lng}&coverage=${selectedComparisons[0].coverage}&bands=${selectedComparisons[0].band}&start_date=${startDate}&end_date=${endDate}`;
+              downloadFile(url, 'series.csv');
+            }
+          }}
+          disabled={!latLng || !selectedComparisons[0].coverage}
+        >
+          Baixar Séries CSV
+        </button>
+
+        <button
+          onClick={() => {
+            if (selectedComparisons[0].coverage && selectedComparisons[0].band) {
+              const url = `http://localhost:3000/api/export/json/series?lat=${latLng?.lat}&lng=${latLng?.lng}&coverage=${selectedComparisons[0].coverage}&bands=${selectedComparisons[0].band}&start_date=${startDate}&end_date=${endDate}`;
+              downloadFile(url, 'series.json');
+            }
+          }}
+          disabled={!latLng || !selectedComparisons[0].coverage}
+          style={{ marginLeft: '10px' }}
+        >
+          Baixar Séries JSON
+        </button>
+      </div>
     </div>
   );
 };

@@ -188,7 +188,7 @@ app.get('/api/wtss/timeseries', async (req: Request, res: Response) => {
       );
     });
 
-    // Derivadas (NDVI, EVI, NBR)
+    // Derivadas
     bandsToCompute.forEach(derivative => {
       switch (derivative) {
         case 'NDVI':
@@ -232,7 +232,7 @@ app.get('/api/wtss/timeseries', async (req: Request, res: Response) => {
 // 🔹 NOVAS ROTAS DE EXPORTAÇÃO CSV
 // =======================================================
 
-// ✅ Exportar metadados (STAC)
+// CSV Metadados
 app.get('/api/export/csv/metadados', async (req: Request, res: Response) => {
   const lat = parseFloat(req.query.lat as string);
   const lng = parseFloat(req.query.lng as string);
@@ -268,7 +268,7 @@ app.get('/api/export/csv/metadados', async (req: Request, res: Response) => {
   }
 });
 
-// ✅ Exportar séries temporais (WTSS)
+// CSV Séries
 app.get('/api/export/csv/series', async (req: Request, res: Response) => {
   const { lat, lng, coverage, bands, start_date, end_date } = req.query;
   const parsedBands = (bands as string)?.split(',') || [];
@@ -308,6 +308,93 @@ app.get('/api/export/csv/series', async (req: Request, res: Response) => {
     res.send(csvString);
   } catch {
     res.status(500).json({ error: 'Erro ao gerar CSV de séries.' });
+  }
+});
+
+// =======================================================
+// 🔹 NOVAS ROTAS DE EXPORTAÇÃO JSON
+// =======================================================
+
+// JSON Metadados
+app.get('/api/export/json/metadados', async (req: Request, res: Response) => {
+  const lat = parseFloat(req.query.lat as string);
+  const lng = parseFloat(req.query.lng as string);
+  const filterSatellite = req.query.satellite as string;
+  const filterVariable = req.query.variable as string;
+  const filterStart = req.query.start_date as string;
+  const filterEnd = req.query.end_date as string;
+
+  if (isNaN(lat) || isNaN(lng)) {
+    return res.status(400).json({ error: 'Forneça lat e lng válidos.' });
+  }
+
+  try {
+    const available = await getStacCollections(
+      lat,
+      lng,
+      filterSatellite,
+      filterVariable,
+      filterStart,
+      filterEnd
+    );
+
+    if (available.length === 0) {
+      return res.status(400).json({ error: 'Nenhum dado para exportar.' });
+    }
+
+    res.header('Content-Type', 'application/json');
+    res.attachment('metadados_satélites.json');
+    res.send(JSON.stringify(available, null, 2));
+  } catch (error: any) {
+    res.status(500).json({ error: `Erro ao gerar JSON de metadados: ${error.message}` });
+  }
+});
+
+// JSON Séries
+app.get('/api/export/json/series', async (req: Request, res: Response) => {
+  const { lat, lng, coverage, bands, start_date, end_date } = req.query;
+  const parsedBands = (bands as string)?.split(',') || [];
+
+  if (!lat || !lng || !coverage || parsedBands.length === 0) {
+    return res.status(400).json({ error: 'Forneça params válidos.' });
+  }
+
+  try {
+    const url = `http://localhost:${PORT}/api/wtss/timeseries`;
+
+    const response = await axios.get(url, {
+      params: {
+        lat,
+        lng,
+        coverage,
+        bands: parsedBands.join(','),
+        start_date,
+        end_date
+      },
+    });
+
+    const { timeline, values } = response.data;
+
+    if (!timeline || timeline.length === 0) {
+      return res.status(400).json({ error: 'Nenhum dado para exportar.' });
+    }
+
+    const formatted = {
+      lat,
+      lng,
+      coverage,
+      bands: parsedBands,
+      start_date,
+      end_date,
+      timeline,
+      values
+    };
+
+    res.header('Content-Type', 'application/json');
+    res.attachment('series_temporais.json');
+    res.send(JSON.stringify(formatted, null, 2));
+  } catch (error: any) {
+    res.status(500).json({ error: `Erro ao gerar JSON de séries: ${error.message}` });
   }
 });
 
