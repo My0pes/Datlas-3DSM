@@ -52,6 +52,7 @@ export function BuscarEndereco({ onSelecionar }: Props) {
                             onSelecionar({lat: parseFloat(item.lat), lng: parseFloat(item.lon)})
                             setQuery("")
                         }}>
+							
                             <strong>{item.address?.city},{item.address?.state}, {item.address?.country}</strong>
                             <span>{item.display_name} </span>
                         </li>
