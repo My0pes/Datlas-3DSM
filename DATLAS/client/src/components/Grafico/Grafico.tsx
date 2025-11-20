@@ -1,22 +1,25 @@
-import Chart from "react-apexcharts";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official"
+
 
 export function Grafico({ dadosPesquisa }: any) {
-	console.log(dadosPesquisa);
 	let maiorTimeline: any;
 	let series: any;
+
 	if (dadosPesquisa.length > 1) {
 		maiorTimeline = dadosPesquisa.reduce((maior: any, atual: any) => {
-			return atual.timeline.length > maior.timeline.length ? atual.timeline : maior.timeline;
-		});
+			return atual.timeline.length > maior.timeline.length ? atual : maior;
+		}).timeline;
+
 		series = dadosPesquisa.map((r: any) => {
-			const valoresAlinados = maiorTimeline.map((data: any) => {
+			const valoresAlinhados = maiorTimeline.map((data: any) => {
 				const index = r.timeline.indexOf(data);
-				return index !== -1 ? r.values[index] : undefined;
+				return index !== -1 ? r.values[index] : null; // Highcharts aceita null para gaps
 			});
 
 			return {
 				name: r.colecao,
-				data: valoresAlinados,
+				data: valoresAlinhados,
 			};
 		});
 	} else {
@@ -31,32 +34,48 @@ export function Grafico({ dadosPesquisa }: any) {
 		];
 	}
 
-	return (
-		<>
-			<Chart
-				options={{
-					chart: { id: "Comparativo" },
-					title: {
-						text: "Comparativo de Satélites",
-						align: "center", // ou 'left', 'right'
-						style: {
-							fontSize: "20px",
-							fontWeight: "bold",
-							color: "#333",
-						},
-					},
-					xaxis: { categories: maiorTimeline },
-					stroke: {
-						curve: "smooth",
-					},
-					markers: { size: 4 },
-					tooltip: { shared: true, intersect: false },
-				}}
-				series={series}
-				type="line"
-				width={"100%"}
-				height={"100%"}
-			/>
-		</>
-	);
+	const options: Highcharts.Options = {
+		title: {
+			text: "Comparativo de Satélites",
+			align: "center",
+			style: {
+				fontSize: "20px",
+				fontWeight: "bold",
+				color: "#333",
+			},
+		},
+		xAxis: [
+			{
+				categories: maiorTimeline,
+				title: { text: "Datas" },
+			},
+		],
+		yAxis: [
+			{
+				title: { text: "NDVI" },
+			},
+		],
+		tooltip: {
+			shared: true,
+		},
+		plotOptions: {
+			series: {
+				connectNulls: true,
+				marker: {
+					enabled: true,
+					radius: 4,
+				},
+			},
+		},
+		exporting: {
+			enabled: true
+		},
+		series: series as Highcharts.SeriesOptionsType[],
+	};
+
+	return <HighchartsReact highcharts={Highcharts} options={options} containerProps={{
+		style: { 
+			height: "100%",
+		} 
+	}} />;
 }

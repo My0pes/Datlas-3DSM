@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 import { Select } from "../Form/Select";
 import styles from "./Dashboard.module.css";
 import { Grafico } from "../Grafico/Grafico";
@@ -10,8 +10,6 @@ type DashboardProps = {
 	coordenadas: any;
 };
 
-
-
 export function Dashboard({ visible, onClose, attCommom, coordenadas }: DashboardProps) {
 	const [selecionados, setSelecionados] = useState<[] | undefined>(undefined);
 	const [selectNumbers, setSelectNumbers] = useState<JSX.Element[]>([]);
@@ -21,7 +19,9 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
 	const [dateEnd, setDateEnd] = useState<any>();
 	const [visibleDashboard, setVisibleDashboard] = useState<boolean>();
 	const [todasPesquisas, setTodasPesquisas] = useState<[] | null>(null);
-	
+	const formRef = useRef<HTMLFormElement>(null);
+
+
 	const API_URL = "http://localhost:3000";
 
 	const handleChange = (sat: []) => {
@@ -68,10 +68,7 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
 			dataStart: formData.get("dateStart"),
 			dataEnd: formData.get("dateEnd"),
 			filtro: formData.get("filtro"),
-		}
-		
-
-		console.log(dados);
+		};
 
 		const colecoes = [dados?.satelite01, dados?.satelite02, dados?.satelite03, dados?.satelite04];
 		let resultPesquisa: any = [];
@@ -85,7 +82,6 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
 					data_start: dados?.dataStart,
 					data_end: dados?.dataEnd,
 				};
-				console.log(pesquisa)
 				try {
 					const response = await fetch(`${API_URL}/wtss/search`, {
 						method: "POST",
@@ -126,10 +122,22 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
 		}
 	}, [selecionados, visible, visibleDashboard]);
 
+	useEffect(() => {
+		// Sempre que coordenadas mudar, resetamos o estado do Dashboard
+		setSelecionados(undefined);
+		setSelectNumbers([]);
+		setLimiteAtingido(false);
+		setMessageSelect("");
+		setDateStart(undefined);
+		setDateEnd(undefined);
+		setTodasPesquisas(null);
+		formRef.current?.reset()
+	}, [coordenadas]);
+
 	return (
 		<>
-			<div className={visibleDashboard == true ? styles.dashboard : styles.disable}>
-				<form onSubmit={handleSubmit}>
+			<div className={visibleDashboard == true ? styles.dashboard : styles.disable} >
+				<form onSubmit={handleSubmit} ref={formRef}>
 					<div className={styles.filtros}>
 						<p>Filtros</p>
 						<div className={styles.filtrosCheck}>{filtros}</div>

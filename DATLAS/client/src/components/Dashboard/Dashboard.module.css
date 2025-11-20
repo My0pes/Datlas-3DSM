@@ -12,28 +12,29 @@
 	padding: 1rem;
 	box-sizing: border-box;
 
-	& .chartDashboard{
+	& .chartDashboard {
 		width: 100%;
 	}
-	& #closeDashboard{
+	& #closeDashboard {
 		width: 2rem;
 		height: 2rem;
 		border-radius: 2rem;
 		padding: 0;
 	}
-
 }
 
 .disable {
 	display: none;
 }
 
-form{
+form {
 	display: flex;
 	gap: 1rem;
+
 	.filtros {
 		height: 31rem;
 		overflow: hidden;
+
 		.filtrosCheck {
 			display: flex;
 			flex-direction: column;
@@ -45,30 +46,36 @@ form{
 			box-sizing: border-box;
 		}
 
-		.filtrosCheck::-webkit-scrollbar{
-			width: .5rem;
-			height: .5rem;
+		.filtrosCheck::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
 			background-color: #252c3a;
 		}
 
-		.filtrosCheck::-webkit-scrollbar-track{
+		.filtrosCheck::-webkit-scrollbar-track {
 			background-color: #d4d4d4;
 		}
 
-		.filtrosCheck::-webkit-scrollbar-thumb{
+		.filtrosCheck::-webkit-scrollbar-thumb {
 			background-color: #252c3a;
 			border-radius: 1rem;
 		}
 	}
 
-	.satelites{
-		width: 15rem;
+	.satelites {
+		width: 16rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+
+		& input, select {
+			text-transform: uppercase ;
+			width: 12rem;
+			height: 1.5rem;
+		}
 	}
 
-	select{
+	select {
 		width: 12rem;
 	}
 
@@ -76,5 +83,3 @@ form{
 		width: 12rem;
 	}
 }
-
-

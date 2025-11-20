@@ -35,42 +35,62 @@ class WtssController {
 			let nameSat: string
 			let searcAtributesBands: any
 			let allAtributesUnique:any = []
+
 			// Pega todos os atributos, mesmo que repetidos
+			for( const col of listCoveragesResponse) {
+				searcAtributes = await fetch(`${api_wtss}/${col}`);
+				searcAtributesJson = await searcAtributes.json();
+				searcAtributesBands = searcAtributesJson.bands;
+				while(typeof searcAtributesBands === "undefined"){
+					searcAtributes = await fetch(`${api_wtss}/${col}`);
+					searcAtributesJson = await searcAtributes.json();
+					searcAtributesBands = searcAtributesJson.bands;
+				}
+				searcAtributesBands.forEach((bandName: any) => {
+					allAtributeslist.push(bandName.name)
+				})
+			};
+
+			// Separa os atributos, tirando os repetidos
+			allAtributesUnique = [... new Set(allAtributeslist)]
+
+			// Separando as coleções por atributos
 			for( const col of listCoveragesResponse) {
 				searcAtributes = await fetch(`${api_wtss}/${col}`);
 				searcAtributesJson = await searcAtributes.json();
 				nameSat = col
 				searcAtributesBands = searcAtributesJson.bands;
-				
-				// 
 				while(typeof searcAtributesBands === "undefined"){
 					searcAtributes = await fetch(`${api_wtss}/${col}`);
 					searcAtributesJson = await searcAtributes.json();
 					nameSat = col
 					searcAtributesBands = searcAtributesJson.bands;
 				}
-				searcAtributesBands.forEach((bandName: any) => {
-					allAtributeslist.push(bandName.name)
-				})
-				
-				allAtributesUnique = [... new Set(allAtributeslist)]
+
 				allAtributesUnique.forEach((att: string) => {
+					
+					// Verifica se o atributo já foi adicionado a lista
 					const temNaLista = listCommomAtributes.some((item) => item.name == att)
+					
+					// Verifica se a coleção tem esse atributo
 					const satTemAtt = searcAtributesBands.some((item:any) => item.name == att)
 
-					if(temNaLista){
+					if(!temNaLista){
+						listCommomAtributes.push({
+							name: att,
+							colecoes: []
+						})
+					}
+
+					if(satTemAtt){
 						const index = listCommomAtributes.findIndex((item) => item.name == att)
 						if(index !== -1){
 							listCommomAtributes[index]?.colecoes.push(nameSat)
 						}
-					}else{
-						listCommomAtributes.push({
-							name: att,
-							colecoes: [col]
-						})
 					}
 				})
 			};
+			
 			// console.log(listCommomAtributes)
 			return res.json(listCommomAtributes)
 		} catch (error: any) {
@@ -100,7 +120,7 @@ class WtssController {
 			timeline: resonseJson.result.timeline
 
 		}
-		// console.log("meu json formatado:", formatResponse)
+		console.log("meu json formatado:", formatResponse)
 		return res.json(formatResponse)
 	}
 }
