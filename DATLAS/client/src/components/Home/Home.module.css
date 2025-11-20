@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.home{
+    position: relative;
+
+    .backgroundPlanet{
+        position: relative;
+        top: -2px;
+        height: 100dvh;
+        width: 100vw;
+        box-sizing: border-box;
+        background-image: url("../../assets/terra.gif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        clip-path: polygon(0 0, 100% 0, 0 100%); 
+        
+
+        .goMap{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            position: fixed;
+            z-index: 49;
+            left: 5rem;
+            top: 50%;
+            color: #151A22;
+            background-color: #fff;
+            img{
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
+}
