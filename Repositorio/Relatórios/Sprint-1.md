@@ -14,22 +14,22 @@ Além disso, a sprint também serviu para acostumar os membros da equipe aos nov
 🗂️ Criação e organização do backlog inicial do produto;                                                                                                                                                                                                
 🤝 Adaptação da equipe às práticas ágeis utilizadas no projeto.                                                                                                                                                                                                
 
-⚠️ Dificuldades Enfrentadas
-🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;
-💬 Necessidade de melhorar a comunicação e o alinhamento interno da equipe;
-⏱️ Tempo limitado para finalizar os conceitos.
+⚠️ Dificuldades Enfrentadas                                                                                                                                                                                                
+🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;                                                                                                                                                                                                
+💬 Necessidade de melhorar a comunicação e o alinhamento interno da equipe;                                                                                                                                                                                                
+⏱️ Tempo limitado para finalizar os conceitos.                                                                                                                                                                                                
 
-📚 Aprendizados
-🔁 Importância de uma comunicação clara e constante entre todos os membros;
-🚀 Experiência prática e maior familiaridade com o framework Scrum;
-🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
+📚 Aprendizados                                                                                                                                                                                                                                                                                                                                                                                                
+🔁 Importância de uma comunicação clara e constante entre todos os membros;                                                                                                                                                                                                
+🚀 Experiência prática e maior familiaridade com o framework Scrum;                                                                                                                                                                                                
+🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).                                                                                                                                                                                                
 
-🔮 Planejamento para a Sprint 2
-🧱 Refinar os requisitos funcionais do módulo de pedidos;
-🎨 Iniciar o desenvolvimento e detalhamento das interfaces;
-📋 Reorganizar e priorizar o backlog para as próximas entregas;
-🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
+🔮 Planejamento para a Sprint 2                                                                                                                                                                                                
+🧱 Refinar os requisitos funcionais do módulo de pedidos;                                                                                                                                                                                                
+🎨 Iniciar o desenvolvimento e detalhamento das interfaces;                                                                                                                                                                                                
+📋 Reorganizar e priorizar o backlog para as próximas entregas;                                                                                                                                                                                                
+🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.                                                                                                                                                                                                
 
-💡Críticas do Cliente
-📚Botões Grandes
-📋Textos Grandes
+💡Críticas do Cliente                                                                                                                                                                                                                                                                                                                                                                                                
+📚Botões Grandes                                                                                                                                                                                                                                                                                                                                                                                                
+📋Textos Grandes                                                                                                                                                                                                                                                                                                                                                                                                
