@@ -1,31 +1,38 @@
-🏁 Relatório Sprint 1
-🗓️ Período: (22/09) á (07/10)
+🏁 Relatório Sprint 2
+🗓️ Período: (13/10) á (04/11)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 🎯 Objetivo da Sprint
+A Sprint 2 teve como foco principal o desenvolvimento do Backend do site, focamos na estrutura lógica e nas principais funcionalidades que suportam o funcionamento do site DATLAS.
 
-A Sprint 1 teve como principal objetivo apresentar e validar o conceito dos pedidos do cliente do sistema RápidoEntregas, estabelecendo a base para o desenvolvimento das próximas funcionalidades.
-Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis ágeis, especialmente as funções de Product Owner (PO) 🧭 e Scrum Master ⚙️, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
+Durante essa sprint, foram apresentados e validados dois pilares importantes do projeto:
 
-📦 Entregas Realizadas
-💡 Apresentação do conceito e fluxo dos pedidos do cliente (protótipo ou diagrama conceitual);
-🧾 Definição inicial das principais funcionalidades e requisitos relacionados aos pedidos;
-🗂️ Criação e organização do backlog inicial do produto;
-🤝 Adaptação da equipe às ferramentas e práticas ágeis utilizadas no projeto.
+🔍 Comparação de dados dos satélites, essencial para a análise;                                                                                                                                                                                                
+🗺️ Mapa interativo com visualização dinâmica e integração de informações.
 
-⚠️ Dificuldades Enfrentadas
-🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;
-💬 Necessidade de melhorar a comunicação e o alinhamento interno da equipe;
-⏱️ Tempo limitado para refinar os conceitos e realizar testes mais detalhados.
+Além disso, houve melhorias na gestão do projeto, apesar de novos desafios.
 
-📚 Aprendizados
-🔁 Importância de uma comunicação clara e constante entre todos os membros;
-🚀 Experiência prática e maior familiaridade com o framework Scrum;
-🧠 Melhor compreensão do processo de pedidos do cliente e sua integração com as demais áreas do sistema (entregas, notificações e pagamentos).
+⚙️ 2. Entregas Realizadas                                                                                                                                                                                                
+🖥️ Estrutura quase finalizada do Backend do site implementada;                                                                                                                                                                                                
+🔗 Funcionalidades de comparação de dados entre satélites;                                                                                                                                                                                                
+🗺️ Primeira versão funcional do mapa interativo integrada ao backend;                                                                                                                                                                                                
+📊 Organização e revisão do fluxo de dados para garantir consistência e performance;                                                                                                                                                                                                
+📅 Melhora no processo de gestão e acompanhamento das tarefas.                                                                                                                                                                                              
 
-🔮 Planejamento para a Sprint 2
-🧱 Refinar os requisitos funcionais do módulo de pedidos;
-🎨 Iniciar o desenvolvimento e detalhamento das interfaces;
-📋 Reorganizar e priorizar o backlog para as próximas entregas;
-🤜🤛 Consolidar as práticas ágeis e fortalecer a colaboração entre PO, Scrum Master e equipe de desenvolvimento.
+⚠️ 3. Dificuldades Enfrentadas                                                                                                                                                                                                
+👥 Dificuldade de produção de alguns membros durante a sprint, impactando a velocidade de desenvolvimento;                                                                                                                                                                                                
+🔧 Ajustes necessários no backend para garantir comunicação eficiente com o futuro frontend;                                                                                                                                                                                                
+🕓 Necessidade de reorganizar prazos devido a imprevistos na disponibilidade da equipe.                                                                                                                                                                                                
+
+📚 4. Aprendizados                                                                                                                                                                                                                                                                                                                                                                                                
+🤝 Importância de manter um plano de contingência quando há dificuldade de presença de membros;                                                                                                                                                                                                
+🧭 Melhoria significativa na gestão do projeto, especialmente no acompanhamento das tarefas;                                                                                                                                                                                                
+🔄 Melhor compreensão da arquitetura necessária para integrar mapas e dados externos.
+
+🔮 5. Planejamento para a Sprint 3                                                                                                                                                                                                
+🏗️ Portar o Backend para o Frontend;                                                                                                                                                                                                
+🎨 Terminar o desenvolvimento do Frontend e integração completa;                                                                                                                                                                                                
+🛠️ Refinar o mapa interativo;                                                                                                                                                                                                
+📌 Melhorar a comunicação interna para lidar com possíveis dificuldades;                                                                                                                                                                                                
+📚 Criar documentação mais detalhada do backend e das APIs.
