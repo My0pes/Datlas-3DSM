@@ -8,11 +8,11 @@
 A Sprint 1 teve como principal objetivo apresentar o conceito dos pedidos do cliente, estabelecendo a base para o desenvolvimento das próximas funcionalidades.
 Além disso, a sprint também serviu para acostumar os membros da equipe aos novos papéis, especialmente as funções de Product Owner (PO) 🧭 e Scrum Master ⚙️, promovendo alinhamento e aprendizado sobre suas responsabilidades dentro do framework Scrum.
 
-📦 Entregas Realizadas
-💡 Apresentação do conceito e fluxo dos pedidos do cliente (protótipo no Figma);
-🧾 Definição inicial das principais funcionalidades e requisitos relacionados aos pedidos;
-🗂️ Criação e organização do backlog inicial do produto;
-🤝 Adaptação da equipe às práticas ágeis utilizadas no projeto.
+📦 Entregas Realizadas                                                                                                                                                                                                
+💡 Apresentação do conceito e fluxo dos pedidos do cliente (protótipo no Figma);                                                                                                                                                                                                
+🧾 Definição inicial das principais funcionalidades e requisitos relacionados aos pedidos;                                                                                                                                                                                                
+🗂️ Criação e organização do backlog inicial do produto;                                                                                                                                                                                                
+🤝 Adaptação da equipe às práticas ágeis utilizadas no projeto.                                                                                                                                                                                                
 
 ⚠️ Dificuldades Enfrentadas
 🧩 Adaptação inicial aos novos papéis e responsabilidades dentro do Scrum;
