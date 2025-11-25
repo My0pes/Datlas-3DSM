@@ -11,7 +11,7 @@ export function Home(){
     return (
         <>
             <div className={styles.home}>
-                <Header />
+                <Header visible={true}/>
                 <div className={styles.backgroundPlanet}>
                     <button className={styles.goMap} onClick={() => navigate("/mapa")}>
                         <img src={iconMap} alt="" /> 
