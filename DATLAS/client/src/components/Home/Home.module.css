@@ -4,30 +4,74 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #fff;
 }
 
-.home{
+.home {
     position: relative;
+    width: 100%;
+    overflow-x: hidden;
 
-    .backgroundPlanet{
+    .backgroundPlanet {
         position: relative;
         top: -2px;
         height: 100dvh;
         width: 100vw;
-        box-sizing: border-box;
         background-image: url("../../assets/terra.gif");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        clip-path: polygon(0 0, 100% 0, 0 100%); 
-        
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        display: flex;
+        align-items: center;
+        padding: 4rem;
 
-        .goMap{
+        /* Textinho de cria acima do botao de mapa */
+        .leftInfo {
+            flex: 1;
+            max-width: 600px;
+            color: #fff;
+
+            h1 {
+                font-size: 2.4rem;
+                font-weight: 600;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+            }
+
+            .btns {
+                display: flex;
+                gap: 1rem;
+
+                .btnPrimary {
+                    background-color: #00b5d8;
+                    color: #fff;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+
+                .btnOutline {
+                    background: transparent;
+                    border: 2px solid #fff;
+                    padding: 10px 22px;
+                    border-radius: 25px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        /* Botão  */
+        .goMap {
             display: flex;
             align-items: center;
             gap: .5rem;
@@ -37,11 +81,78 @@ body{
             top: 50%;
             color: #151A22;
             background-color: #fff;
-            img{
+
+            img {
                 width: 2rem;
                 height: 2rem;
             }
         }
     }
 
+    /* parte do bem viado*/
+    .welcomeSection {
+        margin-top: -180px;
+        text-align: center;
+        padding: 3rem 0;
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .underline {
+            width: 70px;
+            height: 4px;
+            background-color: #00b5d8;
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Cards aqui cas*/
+    .cards {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding-bottom: 3rem;
+
+        .card {
+            width: 220px;
+            height: 220px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: .3s;
+            cursor: pointer;
+
+            &:hover {
+                transform: translateY(-6px);
+            }
+
+            img, svg {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 1rem;
+                color: #00b5d8;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+                color: #222;
+                margin-bottom: 0.3rem;
+            }
+
+            p {
+                font-size: .9rem;
+                color: #666;
+            }
+        }
+    }
 }
