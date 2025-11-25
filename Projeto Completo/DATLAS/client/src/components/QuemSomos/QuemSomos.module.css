@@ -1,0 +1,40 @@
+.box {
+  width: 80vw;
+  padding: 20px;
+  margin: 40px auto;             
+  border-radius: 12px;        
+  border: 2px solid #ccc;
+  background-color: #ccc; 
+  text-align: justify;        
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  align-items: center;        
+  min-height: 150px;       
+}
+
+.box p {
+  margin-bottom: 12px; 
+  color: #111;
+}
+
+.box p:last-child {
+  margin-bottom: 0;
+}
+
+.box h1 {
+  margin-bottom: 40px; 
+  color: #111;
+}
+
+.imagesContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.imagesContainer img {
+  height: 150px;
+  object-fit: cover;
+}
