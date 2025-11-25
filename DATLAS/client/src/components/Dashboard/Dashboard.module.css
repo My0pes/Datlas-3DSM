@@ -35,7 +35,7 @@ form {
     padding: 0.8rem;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;
 }
 
 .filtros p {
@@ -130,6 +130,13 @@ form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.loading {
+	font-weight: 700;
+	font-size: 1rem;
+	color: #00b5d8; 
+	margin-bottom: 0.5rem
 }
 
 
