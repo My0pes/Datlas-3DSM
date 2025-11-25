@@ -27,7 +27,7 @@ export function Header({visible}: HeaderProps) {
 				<nav className={styles.menu}>
 					<Link to="/">Home</Link>
 					<Link to="/mapa">Mapa</Link>
-					<a href="#">Quem Somos</a>
+					<Link to="/quem-somos">Quem Somos</Link>
 				</nav>
 			</header>
 		</>
