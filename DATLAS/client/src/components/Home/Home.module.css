@@ -7,366 +7,154 @@
 body {
     height: 100%;
     margin: 0;
-<<<<<<< Updated upstream
     overflow-x: hidden;
     background-color: #fff;
-=======
-    /* overflow: hidden; Opcional: Removido para permitir o scroll se a página for longa */
-    background-color: #fff; 
->>>>>>> Stashed changes
 }
 
 .home {
     position: relative;
-<<<<<<< Updated upstream
     width: 100%;
     overflow-x: hidden;
-
-    .backgroundPlanet {
-        position: relative;
-        top: -2px;
-        height: 100dvh;
-        width: 100vw;
-        background-image: url("../../assets/terra.gif");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        clip-path: polygon(0 0, 100% 0, 0 100%);
-        display: flex;
-        align-items: center;
-        padding: 4rem;
-
-        /* Textinho de cria acima do botao de mapa */
-        .leftInfo {
-            flex: 1;
-            max-width: 600px;
-            color: #fff;
-
-            h1 {
-                font-size: 2.4rem;
-                font-weight: 600;
-                line-height: 1.3;
-                margin-bottom: 1.5rem;
-            }
-
-            .btns {
-                display: flex;
-                gap: 1rem;
-
-                .btnPrimary {
-                    background-color: #00b5d8;
-                    color: #fff;
-                    padding: 12px 24px;
-                    border-radius: 25px;
-                    border: none;
-                    cursor: pointer;
-                    font-size: 1rem;
-                    font-weight: 500;
-                }
-
-                .btnOutline {
-                    background: transparent;
-                    border: 2px solid #fff;
-                    padding: 10px 22px;
-                    border-radius: 25px;
-                    color: #fff;
-                    cursor: pointer;
-                    font-size: 1rem;
-                }
-            }
-        }
-
-        /* Botão  */
-        .goMap {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            position: fixed;
-            z-index: 49;
-            left: 5rem;
-            top: 50%;
-            color: #151A22;
-            background-color: #fff;
-
-            img {
-                width: 2rem;
-                height: 2rem;
-            }
-        }
-    }
-
-    /* parte do bem viado*/
-    .welcomeSection {
-        margin-top: -180px;
-        text-align: center;
-        padding: 3rem 0;
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 0.5rem;
-        }
-
-        .underline {
-            width: 70px;
-            height: 4px;
-            background-color: #00b5d8;
-            border-radius: 4px;
-            margin: 0 auto;
-        }
-    }
-
-    /* Cards aqui cas*/
-    .cards {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        padding-bottom: 3rem;
-
-        .card {
-            width: 220px;
-            height: 220px;
-            background: #fff;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: .3s;
-            cursor: pointer;
-
-            &:hover {
-                transform: translateY(-6px);
-            }
-
-            img, svg {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 1rem;
-                color: #00b5d8;
-            }
-
-            h3 {
-                font-size: 1.2rem;
-                color: #222;
-                margin-bottom: 0.3rem;
-            }
-
-            p {
-                font-size: .9rem;
-                color: #666;
-            }
-        }
-    }
-}
-=======
-    min-height: 100vh;
-    display: flex; 
-    flex-direction: column;
 }
 
-/* --- BACKGROUND PLANETA --- */
-.backgroundPlanet{
+.home .backgroundPlanet {
     position: relative;
     top: -2px;
-    height: 70dvh; /* Altura ajustada */
+    height: 100dvh;
     width: 100vw;
-    box-sizing: border-box;
     background-image: url("../../assets/terra.gif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 0% 100%); /* Linha diagonal */
-    
+    clip-path: polygon(0 0, 100% 0, 0 100%);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 10vw; 
+    align-items: center;
+    padding: 4rem;
+}
+
+.home .backgroundPlanet .leftInfo {
+    flex: 1;
+    max-width: 600px;
     color: #fff;
-    z-index: 10;
 }
 
-/* Estilos para o texto no planeta */
-.heroText {
-    font-size: 2.8rem;
-    font-weight: 700;
+.home .backgroundPlanet .leftInfo h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.3;
     margin-bottom: 1.5rem;
-    max-width: 500px;
-    line-height: 1.2;
 }
 
-/* Estilos para os botões no planeta */
-.heroButtons {
+.home .backgroundPlanet .leftInfo .btns {
     display: flex;
     gap: 1rem;
 }
 
-.exploreButton, .demoButton {
-    padding: 0.8rem 1.8rem;
+.home .backgroundPlanet .leftInfo .btns .btnPrimary {
+    background-color: #00b5d8;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
     border: none;
-    border-radius: 8px;
+    cursor: pointer;
     font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.exploreButton {
-    background-color: #00bcd4; 
-    color: #fff;
-}
-
-.exploreButton:hover {
-    background-color: #00a9bd;
-}
-
-.demoButton {
-    background-color: transparent; 
-    color: #fff;
-    border: 2px solid #fff;
-}
-
-.demoButton:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-/* --- SEÇÃO CARDS (ÁREA BRANCA) --- */
-.cardsSection {
-    width: 100vw;
-    padding: 4rem 0 3rem 0; /* Mais padding em cima para o 'Bem vindo!' ficar abaixo da linha */
-    background-color: #fff; 
-    flex-grow: 1; 
-    
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    z-index: 5; 
-}
-
-.welcomeTitle {
-    font-size: 2rem;
     font-weight: 500;
-    color: #333; 
-    margin-bottom: 2.5rem; 
-    position: relative;
 }
 
-/* Linha azul abaixo do "Bem vindo!" */
-.welcomeTitle::after {
-    content: '';
-    position: absolute;
-    bottom: -8px; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px; 
-    height: 3px; 
-    background-color: #00bcd4; 
-    border-radius: 2px;
-}
-
-
-.cardsContainer {
-    display: flex;
-    justify-content: center; 
-    gap: 2.5rem; 
-    max-width: 1200px; 
-    width: 90%; 
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    
-    width: calc((80% - 5rem) / 3); 
-    min-height: 120px; 
-    padding: 1rem 1rem;
-    
-    background-color: #fcfcfc; 
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.home .backgroundPlanet .leftInfo .btns .btnOutline {
+    background: transparent;
+    border: 2px solid #fff;
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: #fff;
     cursor: pointer;
-    text-align: center;
+    font-size: 1rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+.home .backgroundPlanet .goMap {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: fixed;
+    z-index: 49;
+    left: 5rem;
+    top: 50%;
+    color: #151A22;
+    background-color: #fff;
 }
 
-.cardIcon {
-    width: 20px; 
-    height: 20px;
-    margin-bottom: 1.5rem;
-    /* NOTA: Adicione a cor do ícone aqui (se for SVG) */
-    /* color: #00bcd4; */ 
+.home .backgroundPlanet .goMap img {
+    width: 2rem;
+    height: 2rem;
 }
 
-.cardTitle {
-    font-size: 1.3rem;
+
+.home .welcomeSection {
+    margin-top: -360px;      
+    padding-left: 60vw;      
+    text-align: left;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.home .welcomeSection h2 {
+    font-size: 2rem;
     font-weight: 600;
-    color: #333;
+    color: #111;
     margin-bottom: 0.5rem;
 }
 
-.cardDescription {
-    font-size: 0.95rem;
+.home .welcomeSection .underline {
+    width: 70px;
+    height: 4px;
+    background-color: #00b5d8;
+    border-radius: 4px;
+}
+
+
+.home .cards {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;   
+    gap: 2rem;
+    padding-left: 40vw;            
+    padding-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.home .cards .card {
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.home .cards .card:hover {
+    transform: translateY(-6px);
+}
+
+.home .cards .card img,
+.home .cards .card svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: #00b5d8;
+}
+
+.home .cards .card h3 {
+    font-size: 1.2rem;
+    color: #222;
+    margin-bottom: 0.3rem;
+}
+
+.home .cards .card p {
+    font-size: .9rem;
     color: #666;
-    line-height: 1.4;
-    max-width: 200px;
 }
-
-
-/* --- RESPONSIVIDADE BÁSICA --- */
-@media (max-width: 1024px) {
-    .heroText {
-        font-size: 2.2rem;
-    }
-    .cardsContainer {
-        flex-wrap: wrap; 
-        justify-content: center;
-        width: 95%;
-    }
-    .card {
-        width: calc(50% - 2rem); 
-        margin-bottom: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .backgroundPlanet {
-        height: 60dvh;
-        padding-left: 5vw;
-    }
-    .heroText {
-        font-size: 1.8rem;
-        max-width: 90%;
-    }
-    .heroButtons {
-        flex-direction: column;
-        gap: 0.8rem;
-        width: 80%;
-    }
-    .exploreButton, .demoButton {
-        width: 100%;
-        text-align: center;
-    }
-
-    .welcomeTitle {
-        font-size: 1.6rem;
-    }
-    .cardsContainer {
-        flex-direction: column; 
-        align-items: center;
-    }
-    .card {
-        width: 90%; 
-        max-width: 350px; 
-    }
-}
->>>>>>> Stashed changes
