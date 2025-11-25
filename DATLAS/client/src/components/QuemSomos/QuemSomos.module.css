@@ -1,0 +1,140 @@
+.box {
+  width: 80vw;
+  padding: 20px;
+  margin: 40px auto;             
+  border-radius: 12px;        
+  border: 2px solid #ccc;
+  background-color: #ccc; 
+  text-align: justify;        
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  align-items: center;        
+  min-height: 150px;       
+}
+
+.box p {
+  margin-bottom: 12px; 
+  color: #111;
+}
+
+.box p:last-child {
+  margin-bottom: 0;
+}
+
+.box h1 {
+  margin-bottom: 40px; 
+  color: #111;
+}
+
+.imagesContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.imagesContainer img {
+  height: 150px;
+  object-fit: cover;
+}
+
+* {
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+.hero {
+    width: 100%;
+    background-color: #d4e2f3;
+    padding:150px 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    box-sizing: border-box;
+}
+
+.textArea {
+    flex: 1;
+}
+
+.textArea h1 {
+    font-size: 52px; 
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #222;
+    margin: 0;
+}
+
+.imageArea {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.imageArea img {
+    width: 420px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.content {
+    padding: 60px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content p {
+    font-size: 20px;              
+    line-height: 1.75;
+    margin-bottom: 26px;
+    color: #333;
+    text-align: justify;
+}
+
+.content p:first-of-type:first-letter {
+    font-size: 48px;
+    font-weight: bold;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+    padding-top: 4px;
+}
+
+.footerBox {
+    width: 80vw;
+    padding: 20px 40px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.email {
+    font-size: 22px;
+    color: #111;
+}
+
+.iconRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; /* deixa espaço igual entre eles */
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Ícones laterais — maiores */
+.iconRow img {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+}
+
+/* Ícone do meio — maior ainda */
+.iconRow img:nth-child(2) {
+    height: 220px;
+    width: 220px;
+}
