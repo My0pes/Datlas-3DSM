@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { MarkerMap } from "../MarkerMap/MarkerMap";
 import { BuscarEndereco } from "../BuscarEndereco/BuscarEndereco";
 import { Dashboard } from "../Dashboard/Dashboard";
+import { Header } from "../Header/Header";
+import 'leaflet/dist/leaflet.css';
 
 type PropsZoom = {
 	zoom: number;
@@ -28,6 +30,7 @@ export default function MapView() {
 	const [userInteragiu, setUserInteragiu] = useState(false);
 	const [dashboarVisible, setDashboarVisible] = useState(false);
 	const [commomAtributes, setCommomAtributes] = useState<[]>([]);
+	const [headerVisible, setHeaderVisible] = useState<boolean>(true)
 
 	const recebeCoord = (pos: { lat: number; lng: number }) => {
 		setPosition(pos);
@@ -66,6 +69,7 @@ export default function MapView() {
 	};
 	return (
 		<>
+			{headerVisible && <Header visible={true}/>}
 			<div className={styles.map}>
 				<MapContainer center={position} zoom={5.3} style={{ height: "100vh", width: "100vw" }}>
 					<TileLayer
