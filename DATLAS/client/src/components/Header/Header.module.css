@@ -1,8 +1,11 @@
 
-header {
+.header {
 	display: flex;
 	justify-content: space-between;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
 	align-items: center;
 	width: 100vw;
@@ -25,4 +28,9 @@ header {
             color: #fff;
         }
     }
+}
+
+
+.disable {
+    display: none;
 }
