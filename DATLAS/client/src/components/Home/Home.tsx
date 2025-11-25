@@ -1,6 +1,8 @@
 import { Header } from "../Header/Header";
 import styles from "./Home.module.css";
 import iconMap from "../../assets/map-icon.png";
+import iconContato from "../../assets/contato-icon.png";
+import iconQuemSomos from "../../assets/quem-somos-icon.png";
 import { useNavigate } from "react-router-dom";
 
 export function Home() {
@@ -42,19 +44,18 @@ export function Home() {
                 {/* CARDS */}
                 <div className={styles.cards}>
 
-                    <div className={styles.card}>
-                        <img src={iconMap} alt="" />
+                    <div className={styles.card} onClick={() => navigate("/mapa")}>
+                        <img src={iconMap} alt=""  />
                         <h3>Explorar</h3>
-                        <p>Mapas</p>
                     </div>
 
-                    <div className={styles.card}>
-                        <img src={iconMap} alt="" />
-                        <h3>Serviços</h3>
+                    <div className={styles.card} onClick={() => navigate("/quem-somos")}>
+                        <img src={iconQuemSomos} alt="" />
+                        <h3>Quem Somos</h3>
                     </div>
 
-                    <div className={styles.card}>
-                        <img src={iconMap} alt="" />
+                    <div className={styles.card} onClick={() => navigate("/quem-somos#footerArea")}>
+                        <img src={iconContato} alt="" />
                         <h3>Contato</h3>
                     </div>
 

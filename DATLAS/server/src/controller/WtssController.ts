@@ -7,74 +7,104 @@ dotenv.config();
 const api_wtss = process.env.API_ENV_WTSS;
 
 type commomAtt = {
-	name: string,
-	colecoes: any[]
+    name: string,
+    colecoes: any[]
 }
 
-class WtssController {
-	public async searchCoverages(req: Request, res: Response) {
-		try {
-			const listaCoverages = await fetch(`${api_wtss}/list_coverages`);
-			const response: IWtssListCoverages = await listaCoverages.json();
-			return res.json(response);
-		} catch (e: any) {
-			return res.json({ message: e.message });
-		}
-	}
+// cache em memória simples
+let attributesCache: any = null;
+let cacheTimestamp = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutos
 
-	// Pega todos coverages e separa as coleções que tem atributos iguais
-	public async attributesCommomCoverages(req: Request, res: Response, retry = false): Promise<Response> {
+class WtssController {
+    // helper: fetch json with timeout
+    private async fetchWithTimeout(url: string, timeoutMs = 5000) {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), timeoutMs);
         try {
-            const listCoverages = await fetch(`${api_wtss}/list_coverages`);
+            const response = await fetch(url, { signal: ctrl.signal });
+            clearTimeout(timeout);
+            return response;
+        } catch (err) {
+            clearTimeout(timeout);
+            throw err;
+        }
+    }
+
+    public async searchCoverages(req: Request, res: Response) {
+        try {
+            console.log(`[searchCoverages] Chamando ${api_wtss}/list_coverages`);
+            const listaCoverages = await this.fetchWithTimeout(`${api_wtss}/list_coverages`);
+            const response: IWtssListCoverages = await listaCoverages.json();
+            return res.json(response);
+        } catch (e: any) {
+            console.error(`[searchCoverages] Erro:`, e.message);
+            return res.json({ message: e.message });
+        }
+    }
+
+    // Pega todos coverages e separa as coleções que tem atributos iguais
+    public async attributesCommomCoverages(req: Request, res: Response, retry = false): Promise<Response> {
+        try {
+            // retorna cache se ainda válido
+            if (attributesCache && Date.now() - cacheTimestamp < CACHE_TTL) {
+                console.log("Retornando cache de atributos");
+                return res.json(attributesCache);
+            }
+
+            console.log(`[attributesCommomCoverages] Chamando ${api_wtss}/list_coverages`);
+            const listCoverages = await this.fetchWithTimeout(`${api_wtss}/list_coverages`);
             let listCoveragesResponse: any = await listCoverages.json();
             listCoveragesResponse = listCoveragesResponse.coverages;
             let listCommomAtributes: commomAtt[] = [];
             let allAtributeslist: string[] = [];
-            let allAtributesUnique:any = []
+            let allAtributesUnique: any = []
 
             // helper: fetch json with simple retry and content-type check
-            async function fetchJsonWithRetries(url: string, tries = 3, delayMs = 500) {
-                let lastErr: any;
-                for (let i = 0; i < tries; i++) {
-                    try {
-                        const r = await fetch(url);
-                        if (!r.ok) {
-                            const txt = await r.text().catch(() => "");
-                            throw new Error(`HTTP ${r.status} ${r.statusText} - ${txt.substring(0,200)}`);
-                        }
-                        const ct = r.headers.get("content-type") || "";
-                        if (!ct.includes("application/json")) {
-                            const txt = await r.text().catch(() => "");
-                            throw new Error(`Non-JSON response (content-type=${ct}): ${txt.substring(0,200)}`);
-                        }
-                        return await r.json();
-                    } catch (e: any) {
-                        lastErr = e;
-                        if (i < tries - 1) await new Promise(r => setTimeout(r, delayMs));
-                    }
-                }
-                throw lastErr;
-            }
+            const fetchJsonWithRetries = async (url: string, tries = 3, delayMs = 500) => {
+                 let lastErr: any;
+                 for (let i = 0; i < tries; i++) {
+                     try {
+                         const r = await this.fetchWithTimeout(url, 5000);
+                         if (!r.ok) {
+                             const txt = await r.text().catch(() => "");
+                             throw new Error(`HTTP ${r.status} ${r.statusText} - ${txt.substring(0,200)}`);
+                         }
+                         const ct = r.headers.get("content-type") || "";
+                         if (!ct.includes("application/json")) {
+                             const txt = await r.text().catch(() => "");
+                             throw new Error(`Non-JSON response (content-type=${ct}): ${txt.substring(0,200)}`);
+                         }
+                         return await r.json();
+                     } catch (e: any) {
+                         lastErr = e;
+                         console.warn(`[fetchJsonWithRetries] Tentativa ${i + 1}/${tries} falhou para ${url}: ${e.message}`);
+                         if (i < tries - 1) await new Promise(r => setTimeout(r, delayMs * (i + 1))); // backoff
+                     }
+                 }
+                 throw lastErr;
+             };
 
-            // Pega todos os atributos, mesmo que repetidos (tratando respostas não-JSON)
-            for (const col of listCoveragesResponse) {
+             // Pega todos os atributos
+             for (const col of listCoveragesResponse) {
                 try {
+                    console.log(`[attributesCommomCoverages] Buscando atributos de ${col}`);
                     const searcAtributesJson = await fetchJsonWithRetries(`${api_wtss}/${col}`, 3, 300);
                     const searcAtributesBands = searcAtributesJson.bands || [];
                     searcAtributesBands.forEach((bandName: any) => {
                         allAtributeslist.push(bandName.name)
                     });
                 } catch (err: any) {
-                    console.warn(`Falha ao buscar atributos da cobertura ${col}:`, err.message || err);
+                    console.warn(`[attributesCommomCoverages] Falha ao buscar atributos da cobertura ${col}:`, err.message || err);
                     // pular esta cobertura e continuar com as demais
                     continue;
                 }
-            };
+            }
 
             // Separa os atributos, tirando os repetidos
             allAtributesUnique = [... new Set(allAtributeslist)];
 
-            // Separando as coleções por atributos (tratando falhas por cobertura)
+            // Separando as coleções por atributos
             for (const col of listCoveragesResponse) {
                 try {
                     const searcAtributesJson = await fetchJsonWithRetries(`${api_wtss}/${col}`, 3, 300);
@@ -103,39 +133,61 @@ class WtssController {
                     console.warn(`Falha ao processar cobertura ${col}:`, err.message || err);
                     continue;
                 }
-            };
+            }
+
+            // armazena no cache
+            attributesCache = listCommomAtributes;
+            cacheTimestamp = Date.now();
 
             return res.json(listCommomAtributes)
         } catch (error: any) {
-            console.log("Erro ao buscar atributos", error.message)
+            console.error("[attributesCommomCoverages] Erro:", error.message);
+            console.error("[attributesCommomCoverages] Stack:", error.stack);
+            console.error("[attributesCommomCoverages] API_ENV_WTSS =", api_wtss);
+
+            // se tiver cache, retorna mesmo que expirado
+            if (attributesCache) {
+                console.log("Servidor fora, retornando cache expirado");
+                return res.json(attributesCache);
+            }
 
             if(!retry){
                 console.log("Tentando novamente")
                 return this.attributesCommomCoverages(req, res, true)
             }else{
-                return res.status(500).json({ message: "Erro ao buscar atributos"})
+                return res.status(502).json({ 
+                    message: "Serviço WTSS indisponível. Tente novamente em alguns minutos.",
+                    error: error.message,
+                    api_url: api_wtss
+                })
             }
         }
-	
-	}
+    }
 
-	public async query(req: Request, res: Response){
-		const { colecao, filtro, latitude, longitude, data_start, data_end} = req.body
-		// console.log("cheguei no backend")
-		const responseSearch = await fetch(`https://data.inpe.br/bdc/wtss/v4/time_series?coverage=${colecao}&attributes=${filtro}&start_date=${data_start}&end_date=${data_end}&latitude=${latitude}&longitude=${longitude}`)
-		// console.log("minha requisição:", responseSearch)
-		const resonseJson = await responseSearch.json()
-		// console.log("meu json:", resonseJson)
-		const formatResponse = {
-			colecao: resonseJson.query.coverage,
-			filtro: resonseJson.result.attributes[0].attribute,
-			values: resonseJson.result.attributes[0].values,
-			timeline: resonseJson.result.timeline
+    public async query(req: Request, res: Response){
+        const { colecao, filtro, latitude, longitude, data_start, data_end} = req.body
+        
+        try {
+            const responseSearch = await fetch(`https://data.inpe.br/bdc/wtss/v4/time_series?coverage=${colecao}&attributes=${filtro}&start_date=${data_start}&end_date=${data_end}&latitude=${latitude}&longitude=${longitude}`);
+            
+            if (!responseSearch.ok) {
+                return res.status(responseSearch.status).json({ message: "Serviço WTSS retornou erro", status: responseSearch.status });
+            }
 
-		}
-		console.log("meu json formatado:", formatResponse)
-		return res.json(formatResponse)
-	}
+            const resonseJson = await responseSearch.json()
+            const formatResponse = {
+                colecao: resonseJson.query.coverage,
+                filtro: resonseJson.result.attributes[0].attribute,
+                values: resonseJson.result.attributes[0].values,
+                timeline: resonseJson.result.timeline
+            }
+            console.log("meu json formatado:", formatResponse)
+            return res.json(formatResponse)
+        } catch (err: any) {
+            console.error("Erro na query WTSS:", err.message);
+            return res.status(503).json({ message: "Erro ao processar consulta WTSS", error: err.message });
+        }
+    }
 }
 
 export default new WtssController();
