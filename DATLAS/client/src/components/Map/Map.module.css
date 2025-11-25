@@ -1,0 +1,6 @@
+.map {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    position: relative;
+    z-index: 1;
+}

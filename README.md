@@ -12,7 +12,7 @@
 |------|---------------------|--------------------|---------------------|--------------------|  
 | 1 | :calendar:  ➡ (22/09) | 📆 ➡ (07/10) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-1.txt)
 | 2 | :calendar:  ➡ (13/10) | 📆 ➡ (04/11) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-2.txt)
-| 3 | :calendar:  ➡ (06/11) | 📆 ➡ (25/11) | Em andamento | [Relatório](Repositorio/Relatórios/Sprint-3.txt)
+| 3 | :calendar:  ➡ (06/11) | 📆 ➡ (25/11) | Concluída | [Relatório](Repositorio/Relatórios/Sprint-3.txt)
 
 |       RESTRIÇÕES DE PROJETO E TECNOLOGIA      |  
 |-----------------------------------------------|  

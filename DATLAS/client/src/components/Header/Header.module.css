@@ -1,0 +1,36 @@
+
+.header {
+	display: flex;
+	justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+	align-items: center;
+	width: 100vw;
+    box-sizing: border-box;
+    padding: .5rem 5rem;
+    background-color: #151A22;
+
+	.logo {
+		& img {
+			width: 10rem;
+		}
+	}
+
+    .menu {
+        display: flex;
+        gap: 1rem;
+        color: #fff;
+
+        a {
+            color: #fff;
+        }
+    }
+}
+
+
+.disable {
+    display: none;
+}

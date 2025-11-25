@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+.home {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.home .backgroundPlanet {
+    position: relative;
+    top: -2px;
+    height: 100dvh;
+    width: 100vw;
+    background-image: url("../../assets/terra.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+}
+
+.home .backgroundPlanet .leftInfo {
+    flex: 1;
+    max-width: 600px;
+    color: #fff;
+}
+
+.home .backgroundPlanet .leftInfo h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.home .backgroundPlanet .leftInfo .btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.home .backgroundPlanet .leftInfo .btns .btnPrimary {
+    background-color: #00b5d8;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.home .backgroundPlanet .leftInfo .btns .btnOutline {
+    background: transparent;
+    border: 2px solid #fff;
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.home .backgroundPlanet .goMap {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: fixed;
+    z-index: 49;
+    left: 5rem;
+    top: 50%;
+    color: #151A22;
+    background-color: #fff;
+}
+
+.home .backgroundPlanet .goMap img {
+    width: 2rem;
+    height: 2rem;
+}
+
+
+.home .welcomeSection {
+    margin-top: -360px;      
+    padding-left: 60vw;      
+    text-align: left;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.home .welcomeSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.home .welcomeSection .underline {
+    width: 70px;
+    height: 4px;
+    background-color: #00b5d8;
+    border-radius: 4px;
+}
+
+
+.home .cards {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;   
+    gap: 2rem;
+    padding-left: 40vw;            
+    padding-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.home .cards .card {
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.home .cards .card:hover {
+    transform: translateY(-6px);
+}
+
+.home .cards .card img,
+.home .cards .card svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: #00b5d8;
+}
+
+.home .cards .card h3 {
+    font-size: 1.2rem;
+    color: #222;
+    margin-bottom: 0.3rem;
+}
+
+.home .cards .card p {
+    font-size: .9rem;
+    color: #666;
+}
