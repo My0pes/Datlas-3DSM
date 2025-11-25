@@ -5,18 +5,19 @@ type props = {
 };
 
 export function Select({ name, id, lista }: props) {
-	let listOption: any = [
-        <option defaultValue={name} key={name} hidden>{name}</option>
-    ];
-	
-	lista.forEach((value: any, key: any) => {
-		listOption.push(<option value={value} key={key}>{value}</option>);
-	});
-	
+
+	const listaArray = Array.isArray(lista) ? lista : [];
+
+	const defaultVal = listaArray.length > 0 ? listaArray[0] : name;
+
+	const options = listaArray.includes(defaultVal)
+		? listaArray.map((v: any, i: any) => <option value={v} key={i}>{v}</option>)
+		: [<option value={defaultVal} key={`first-${defaultVal}`}>{defaultVal}</option>, ...listaArray.map((v: any, i: any) => <option value={v} key={i}>{v}</option>)];
+
 	return (
 		<>
-			<select name={name} id={id}>
-				{listOption}
+			<select name={name} id={id} defaultValue={defaultVal}>
+				{options}
 			</select>
 		</>
 	);
