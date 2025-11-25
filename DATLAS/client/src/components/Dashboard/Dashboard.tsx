@@ -15,7 +15,6 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
     const [selectNumbers, setSelectNumbers] = useState<JSX.Element[]>([]);
     const [limiteAtingido, setLimiteAtingido] = useState(false);
     const [messageSelect, setMessageSelect] = useState("");
-    const [loadingFiltro, setLoadingFiltro] = useState(false); // indicador visual
     const [dateStart, setDateStart] = useState<any>();
     const [dateEnd, setDateEnd] = useState<any>();
     const [visibleDashboard, setVisibleDashboard] = useState<boolean>();
@@ -24,39 +23,16 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
 
     const API_URL = "http://localhost:3000";
 
-    const commomCacheRef = useRef<any[]>(Array.isArray(attCommom) ? attCommom : []);
-    const controllerRef = useRef<AbortController | null>(null);
-
-    useEffect(() => {
-        if (Array.isArray(attCommom) && attCommom.length > 0) commomCacheRef.current = attCommom;
-        return () => controllerRef.current?.abort();
-    }, [attCommom]);
-
     const handleChange = async (filtroName: string, colecoesLocais: any[]) => {
-        const cached = commomCacheRef.current.find((f: any) => f.name === filtroName);
-        if (cached && Array.isArray(cached.colecoes) && cached.colecoes.length > 0) {
-            setSelecionados(cached.colecoes);
-            return;
-        }
-
-        setLoadingFiltro(true);
         try {
-            controllerRef.current?.abort();
-            const ctrl = new AbortController();
-            controllerRef.current = ctrl;
-            const timeout = setTimeout(() => ctrl.abort(), 2000); // 2s timeout
-
-            const response = await fetch(`${API_URL}/wtss/commomAtt`, { signal: ctrl.signal });
-            clearTimeout(timeout);
+            const response = await fetch(`${API_URL}/wtss/commomAtt`);
             if (!response.ok) {
-                console.warn("Erro ao buscar atributos", response.status);
-                if (Array.isArray(colecoesLocais) && colecoesLocais.length > 0) setSelecionados(colecoesLocais);
+                console.warn("Erro ao buscar atributos");
                 return;
             }
 
             const commomAtt = await response.json();
-            commomCacheRef.current = Array.isArray(commomAtt) ? commomAtt : [];
-            const filtroValido = commomCacheRef.current.find((f: any) => f.name === filtroName);
+            const filtroValido = commomAtt.find((f: any) => f.name === filtroName);
 
             if (filtroValido && Array.isArray(filtroValido.colecoes) && filtroValido.colecoes.length > 0) {
                 setSelecionados(filtroValido.colecoes);
@@ -66,13 +42,11 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
                 setMessageSelect("Filtro inválido ou sem coleções");
                 setSelecionados(undefined);
             }
-        } catch (err: any) {
-            // Abort ou erro de rede -> fallback rápido
-            if (err.name !== "AbortError") console.error("Erro ao validar filtro:", err);
-            if (Array.isArray(colecoesLocais) && colecoesLocais.length > 0) setSelecionados(colecoesLocais);
-        } finally {
-            controllerRef.current = null;
-            setLoadingFiltro(false);
+        } catch (err) {
+            console.error("Erro ao validar filtro:", err);
+            if (Array.isArray(colecoesLocais) && colecoesLocais.length > 0) {
+                setSelecionados(colecoesLocais);
+            }
         }
     };
 
@@ -102,7 +76,6 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
                     name="filtro"
                     value={fil.name}
                     onChange={() => handleChange(fil.name, fil.colecoes)}
-                    disabled={loadingFiltro} // impede seleção enquanto valida
                 />
                 {fil.name}
             </label>
@@ -203,7 +176,6 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
                 <form onSubmit={handleSubmit} ref={formRef}>
                     <div className={styles.filtros}>
                         <p>Filtros</p>
-                        {loadingFiltro && <div className={styles.loading}>Carregando filtros...</div>}
                         <div className={styles.filtrosCheck}>{filtros}</div>
                     </div>
                     <div className={styles.satelites}>
@@ -225,11 +197,10 @@ export function Dashboard({ visible, onClose, attCommom, coordenadas }: Dashboar
                                         e.preventDefault();
                                         handleAddCol(selecionados);
                                     }}
-                                    disabled={loadingFiltro}
                                 >
                                     + Adicionar Coleção
                                 </button>
-                                <button type="submit" disabled={loadingFiltro}>Pesquisar</button>
+                                <button type="submit">Pesquisar</button>
                             </>
                         )}
                     </div>
